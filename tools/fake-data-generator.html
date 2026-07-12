@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Data Generator - MultiTools Premium Web Utilities</title>
+  <meta name="description" content="Generate highly realistic random data for testing and development, including names, emails, phones, addresses, UUIDs, passwords, products, prices, and text.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.354.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Clarity Tracking Script -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xl7p4suhj3");
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="logo" id="site-logo">
+        <i data-lucide="layers" id="logo-icon"></i> Multi<span>Tools</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link ">Home</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="tools-dropdown-toggle">
+            Tools <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+          </a>
+          <div class="dropdown-menu-container">
+            <div class="dropdown-menu-grid">
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="calculator"></i> Calculators</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/scientific-calculator.html">Scientific Calculator</a></li>
+                  <li><a href="../tools/loan-emi-calculator.html">Loan EMI Calculator</a></li>
+                  <li><a href="../tools/age-calculator.html">Age Calculator</a></li>
+                  <li><a href="../tools/bmi-calculator.html">BMI Calculator</a></li>
+                  <li><a href="../tools/unit-converter.html">Unit Converter</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="code"></i> Dev Utilities</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/qr-code-generator.html">QR Code Generator</a></li>
+                  <li><a href="../tools/password-generator.html">Password Generator</a></li>
+                  <li><a href="../tools/base64-encoder-decoder.html">Base64 Encoder/Decoder</a></li>
+                  <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                  <li><a href="../tools/hash-generator.html">SHA-256 & MD5 Generator</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="palette"></i> Design & Text</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/color-picker.html">Color Picker</a></li>
+                  <li><a href="../tools/css-gradient-generator.html">Gradient Generator</a></li>
+                  <li><a href="../tools/image-compressor.html">Image Compressor</a></li>
+                  <li><a href="../tools/word-counter.html">Word & Character Counter</a></li>
+                  <li><a href="../tools/stopwatch-timer.html">Stopwatch & Timer</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="../index.html#tools-section" class="dropdown-all-btn">
+                <span>View All Premium Tools (25 total)</span> <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../about.html" class="nav-link ">About</a></li>
+        <li><a href="../contact.html" class="nav-link ">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="light-icon" id="sun-icon"></i>
+          <i data-lucide="sun" class="dark-icon" id="moon-icon"></i>
+        </button>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <i data-lucide="menu" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="fade-in">
+    
+    <div class="container" style="margin-top: 20px;">
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <div class="breadcrumbs-separator"><i data-lucide="chevron-right"></i></div>
+        <span style="color:var(--text-primary);">Fake Data Generator</span>
+      </div>
+
+      <div class="tool-layout">
+        <!-- Main Tool Column -->
+        <div class="tool-panel">
+          <h1 style="font-size:32px; margin-bottom:12px;">Fake Data Generator</h1>
+          <p class="mb-32" style="color:var(--text-muted); font-size:15px;">Generate highly realistic random data for testing and development, including names, emails, phones, addresses, UUIDs, passwords, products, prices, and text.</p>
+          
+          <div style="margin-top:20px;">
+            
+      <style>
+        .generator-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          width: 100%;
+        }
+        .generator-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.3fr;
+          gap: 28px;
+          align-items: start;
+        }
+        @media (max-width: 991px) {
+          .generator-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+        }
+        .config-card {
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 24px;
+          box-shadow: var(--shadow-sm);
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        .field-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 12px;
+          background: var(--bg-surface-secondary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-md);
+          margin-bottom: 8px;
+        }
+        .field-row-drag {
+          cursor: grab;
+          color: var(--text-muted);
+          display: flex;
+          align-items: center;
+        }
+        .field-row-drag:active {
+          cursor: grabbing;
+        }
+        .field-key-input {
+          flex: 1;
+          font-family: var(--font-mono);
+          font-size: 13px;
+        }
+        .field-type-select {
+          flex: 1.1;
+          font-size: 13px;
+        }
+        .btn-field-delete {
+          color: var(--color-danger);
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.15s;
+        }
+        .btn-field-delete:hover {
+          background: rgba(239, 68, 68, 0.08);
+        }
+        .preview-card {
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 24px;
+          box-shadow: var(--shadow-sm);
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          min-width: 0;
+        }
+        .preview-tabs {
+          display: flex;
+          gap: 8px;
+          border-bottom: 1px solid var(--border-color);
+          padding-bottom: 8px;
+        }
+        .preview-tab-btn {
+          padding: 6px 12px;
+          font-weight: 600;
+          font-size: 13px;
+          color: var(--text-secondary);
+          border: none;
+          background: transparent;
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .preview-tab-btn:hover {
+          background: var(--bg-surface-secondary);
+          color: var(--text-primary);
+        }
+        .preview-tab-btn.active {
+          background: var(--bg-surface-secondary);
+          color: var(--color-primary);
+          box-shadow: inset 0 -2px 0 0 var(--color-primary);
+        }
+        .preview-content-area {
+          background: var(--bg-surface-secondary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 16px;
+          font-family: var(--font-mono);
+          font-size: 13px;
+          color: var(--text-primary);
+          height: 480px;
+          overflow: auto;
+          position: relative;
+        }
+        .table-responsive {
+          width: 100%;
+          overflow-x: auto;
+          font-family: var(--font-sans);
+        }
+        .fake-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 12.5px;
+          text-align: left;
+        }
+        .fake-table th {
+          background: var(--bg-surface-primary);
+          color: var(--text-secondary);
+          font-weight: 600;
+          padding: 10px 12px;
+          border-bottom: 2px solid var(--border-color);
+          position: sticky;
+          top: 0;
+          z-index: 10;
+        }
+        .fake-table td {
+          padding: 10px 12px;
+          border-bottom: 1px solid var(--border-color);
+          color: var(--text-primary);
+          max-width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .fake-table tr:hover td {
+          background: rgba(59, 130, 246, 0.03);
+        }
+        .action-bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+        .action-buttons-group {
+          display: flex;
+          gap: 8px;
+        }
+        .status-badge {
+          font-size: 12px;
+          color: var(--text-muted);
+          font-weight: 500;
+        }
+        .preset-badge {
+          font-size: 11px;
+          padding: 3px 8px;
+          border-radius: 9999px;
+          background: var(--bg-surface-secondary);
+          border: 1px solid var(--border-color);
+          cursor: pointer;
+          font-weight: 600;
+          color: var(--text-secondary);
+          transition: all 0.15s;
+        }
+        .preset-badge:hover {
+          background: var(--border-color);
+          color: var(--text-primary);
+        }
+        .json-pre {
+          margin: 0;
+          white-space: pre-wrap;
+          word-break: break-all;
+        }
+        .csv-pre {
+          margin: 0;
+          white-space: pre;
+          overflow-x: auto;
+        }
+      </style>
+
+      <div class="generator-wrapper">
+        <div class="generator-grid">
+          <!-- Left Configuration Side -->
+          <div class="config-card">
+            <div>
+              <h3 style="margin: 0 0 6px 0; font-size: 16px; font-weight: 700;">Data Schema Configuration</h3>
+              <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Customize the structure and format of fake records.</p>
+            </div>
+
+            <!-- Quick Presets -->
+            <div>
+              <label class="form-label" style="font-size: 12px; margin-bottom: 6px;">Schema Presets</label>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="preset-badge" data-preset="users">👤 Users Database</span>
+                <span class="preset-badge" data-preset="ecommerce">🛒 Products / Store</span>
+                <span class="preset-badge" data-preset="companies">🏢 Organizations</span>
+                <span class="preset-badge" data-preset="simple">📄 Simple Contact</span>
+              </div>
+            </div>
+
+            <!-- Field Rows Container -->
+            <div>
+              <label class="form-label" style="font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between;">
+                <span>Schema Fields</span>
+                <span id="fields-count" style="font-weight: normal; color: var(--text-muted);">0 fields</span>
+              </label>
+              <div id="fields-container">
+                <!-- Dynamically filled with active field rows -->
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btn-add-field" style="width: 100%; margin-top: 8px;">
+                <i data-lucide="plus" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>Add Custom Field
+              </button>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 4px 0;">
+
+            <!-- Settings -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="form-group">
+                <label class="form-label" for="records-count-input">Records to Generate</label>
+                <input type="number" id="records-count-input" class="form-control" value="50" min="1" max="1000">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="export-format-select">Primary Format</label>
+                <select id="export-format-select" class="form-control">
+                  <option value="json">JSON Array</option>
+                  <option value="csv">CSV Spreadsheet</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="btn-generate-fake" style="width: 100%; font-weight: 700; padding: 12px;">
+              <i data-lucide="sparkles" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Generate Fake Data
+            </button>
+          </div>
+
+          <!-- Right Preview Side -->
+          <div class="preview-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <h3 style="margin: 0 0 4px 0; font-size: 16px; font-weight: 700;">Data Preview Panel</h3>
+                <span id="generation-stats" class="status-badge">Click "Generate" to create mock records</span>
+              </div>
+              <div class="preview-tabs">
+                <button class="preview-tab-btn active" data-tab="table">Table View</button>
+                <button class="preview-tab-btn" data-tab="json">JSON View</button>
+                <button class="preview-tab-btn" data-tab="csv">CSV View</button>
+              </div>
+            </div>
+
+            <div class="preview-content-area" id="preview-box">
+              <div style="text-align: center; color: var(--text-muted); padding: 80px 20px;">
+                <i data-lucide="database" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
+                <p style="margin: 0; font-size: 14px; font-weight: 500;">No active dataset generated</p>
+                <p style="margin: 4px 0 0 0; font-size: 12px; opacity: 0.8;">Choose your options on the left and click "Generate Fake Data"</p>
+              </div>
+            </div>
+
+            <div class="action-bar">
+              <span class="status-badge" id="data-size-indicator"></span>
+              <div class="action-buttons-group">
+                <button class="btn btn-secondary" id="btn-copy-data" title="Copy dataset to clipboard" disabled>
+                  <i data-lucide="copy" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>Copy
+                </button>
+                <button class="btn btn-secondary" id="btn-download-json" title="Download as JSON file" disabled>
+                  <i data-lucide="download" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>JSON
+                </button>
+                <button class="btn btn-secondary" id="btn-download-csv" title="Download as CSV spreadsheet" disabled>
+                  <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>CSV
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="card" style="height:fit-content; padding:24px;">
+          <h3 class="mb-16">Quick Instructions</h3>
+          <ul class="footer-links" style="padding-left:16px; list-style:disc; color:var(--text-secondary); margin-bottom:24px; font-size:14px; line-height:1.6;">
+            <li>Fill in all parameter sliders or text input boxes.</li>
+            <li>Calculations run entirely safe and local inside your browser.</li>
+            <li>Use the standard Copy buttons to copy outputs instantly.</li>
+          </ul>
+
+          <h3 class="mb-16">Security & Privacy</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.5;">
+            Our suite executes 100% locally. None of your data, text inputs, password profiles, or uploaded images are ever sent to external cloud servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- SEO Informational Block -->
+      <div class="tool-info-section">
+        <div class="tool-info-block">
+          <h3>Why use the online Fake Data Generator?</h3>
+          <p>This premium Fake Data Generator represents a client-side tool optimized for immediate results. Designed with lightweight modern CSS frames and standard calculations, it loads within milliseconds and operates offline without lag.</p>
+        </div>
+        <div class="tool-info-block">
+          <h3>Key Features & Advantages</h3>
+          <p>Enjoy absolute client-side protection: since no files or texts are transferred to databases, it remains the safest portal. Works fluently across mobile touch devices, iPads, laptops, and desktop browsers alike.</p>
+        </div>
+      </div>
+    </div>
+  
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div>
+        <a href="../index.html" class="logo mb-16">
+          <i data-lucide="layers"></i> Multi<span>Tools</span>
+        </a>
+        <p class="footer-brand-desc">
+          Your premium all-in-one suite of 25 secure, responsive, client-side tools running entirely inside your browser. No server storage, no limits.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../tools/scientific-calculator.html" class="footer-link">Scientific Calculator</a></li>
+          <li><a href="../tools/qr-code-generator.html" class="footer-link">QR Code Generator</a></li>
+          <li><a href="../tools/image-compressor.html" class="footer-link">Image Compressor</a></li>
+          <li><a href="../tools/password-generator.html" class="footer-link">Password Generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../contact.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MultiTools. All rights reserved. 100% browser-safe client-side software.</p>
+      <div style="display: flex; gap: 16px;">
+        <a href="../privacy-policy.html" class="footer-link">Privacy</a>
+        <a href="../disclaimer.html" class="footer-link">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+      const PRESETS_FIELDS = {
+        users: [
+          { key: 'id', type: 'uuid' },
+          { key: 'name', type: 'name' },
+          { key: 'email', type: 'email' },
+          { key: 'phone', type: 'phone' },
+          { key: 'username', type: 'username' },
+          { key: 'password', type: 'password' }
+        ],
+        ecommerce: [
+          { key: 'productId', type: 'uuid' },
+          { key: 'productName', type: 'product' },
+          { key: 'price', type: 'price' },
+          { key: 'category', type: 'category' },
+          { key: 'inStock', type: 'boolean' },
+          { key: 'description', type: 'lorem' }
+        ],
+        companies: [
+          { key: 'companyId', type: 'uuid' },
+          { key: 'companyName', type: 'company' },
+          { key: 'industry', type: 'category' },
+          { key: 'jobTitle', type: 'job' },
+          { key: 'streetAddress', type: 'address' },
+          { key: 'city', type: 'city' }
+        ],
+        simple: [
+          { key: 'firstName', type: 'firstname' },
+          { key: 'lastName', type: 'lastname' },
+          { key: 'email', type: 'email' },
+          { key: 'phoneNumber', type: 'phone' }
+        ]
+      };
+
+      const DATA_POOL = {
+        firstnames: ['John', 'Jane', 'Alex', 'Emily', 'Michael', 'Sarah', 'David', 'Jessica', 'James', 'Olivia', 'Robert', 'Emma', 'William', 'Sophia', 'Joseph', 'Isabella', 'Thomas', 'Mia', 'Charles', 'Charlotte', 'Daniel', 'Amelia', 'Matthew', 'Harper', 'Anthony', 'Evelyn', 'Mark', 'Abigail', 'Donald', 'Elizabeth', 'Paul', 'Sofia', 'Steven', 'Avery', 'Andrew', 'Ella', 'Kenneth', 'Madison', 'Joshua', 'Scarlett'],
+        lastnames: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin', 'Lee', 'Perez', 'Thompson', 'White', 'Harris', 'Sanchez', 'Clark', 'Ramirez', 'Lewis', 'Robinson', 'Walker', 'Young', 'Allen', 'King', 'Wright', 'Scott', 'Torres', 'Nguyen', 'Hill', 'Flores'],
+        domains: ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'prototype.io', 'enterprise.com', 'techcorp.com', 'dynamiclabs.org', 'cloudwave.net', 'sparksolutions.co'],
+        streets: ['Maple', 'Oak', 'Pine', 'Cedar', 'Elm', 'Spruce', 'Birch', 'Walnut', 'Willow', 'Hickory', 'Sunset', 'Broadway', 'Park', 'Main', 'Cherry', 'Forest', 'Lake', 'Hill', 'Valley', 'Ridge', 'Meadow', 'River', 'View', 'Highland', 'Bridge', 'Mill', 'Grove', 'Spring', 'Garden', 'School'],
+        streetTypes: ['St', 'Ave', 'Rd', 'Blvd', 'Ln', 'Dr', 'Way', 'Ct', 'Pl', 'Ter'],
+        cities: ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Austin', 'Jacksonville', 'San Francisco', 'Columbus', 'Fort Worth', 'Indianapolis', 'Charlotte', 'Seattle', 'Denver', 'Boston', 'El Paso', 'Detroit', 'Nashville', 'Portland', 'Memphis', 'Oklahoma City', 'Las Vegas', 'Louisville', 'Baltimore', 'Milwaukee'],
+        companies: ['TechCorp', 'Innovate Solutions', 'CloudWave', 'Apex Labs', 'Global Trade', 'Delta Dynamics', 'Alpha Group', 'Synergy Inc', 'FutureSoft', 'Venture Partners', 'Horizon Media', 'Peak Performance', 'Omni Industries', 'Nexus Systems', 'Core Technologies'],
+        jobs: ['Software Engineer', 'Product Manager', 'Data Scientist', 'UX Designer', 'Account Executive', 'Marketing Manager', 'Financial Analyst', 'HR Specialist', 'Operations Lead', 'Sales Director', 'Customer Success Specialist', 'Devops Engineer', 'Chief Executive Officer', 'Art Director', 'Content Writer'],
+        adjectives: ['Premium', 'Wireless', 'Ergonomic', 'Portable', 'Eco-friendly', 'Smart', 'Ultra', 'Sleek', 'Compact', 'High-performance', 'Heavy-duty', 'Lightweight', 'Modern', 'Classic', 'Hybrid', 'Retro'],
+        nouns: ['Keyboard', 'Headphones', 'Mouse', 'Speaker', 'Water Bottle', 'Backpack', 'Desk Lamp', 'Monitor', 'Smartwatch', 'Charger', 'Notebook', 'Phone Case', 'Sunglasses', 'Wallet', 'Umbrella', 'Coffee Mug'],
+        categories: ['Technology', 'Healthcare', 'Finance', 'Education', 'E-commerce', 'Entertainment', 'Automotive', 'Real Estate', 'Logistics', 'Travel'],
+        loremWords: ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'aliquam', 'nec', 'diam', 'vel', 'nunc', 'efficitur', 'pretium', 'mauris', 'vulputate', 'justo', 'vitae', 'mi', 'dictum', 'tristique', 'proin', 'ac', 'libero', 'eu', 'diam', 'porta', 'cursus', 'sodales', 'non', 'tellus', 'vestibulum', 'tristique', 'sapien', 'in', 'tristique', 'elementum', 'phasellus', 'feugiat', 'felis', 'ex', 'ut', 'posuere', 'nisl', 'porta', 'et', 'ut', 'vitae', 'justo', 'lorem', 'praesent', 'id', 'interdum', 'metus', 'quisque', 'interdum', 'ante', 'ligula', 'id', 'luctus', 'dolor', 'porta', 'vel', 'nam', 'tristique', 'id', 'ex', 'eu', 'tempus']
+      };
+
+      let activeFields = [];
+      let generatedDataset = [];
+      let activeTab = 'table';
+
+      function getHistoryPreferences() {
+        const raw = localStorage.getItem('fake_gen_fields');
+        return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(PRESETS_FIELDS.users));
+      }
+
+      function saveHistoryPreferences(fields) {
+        localStorage.setItem('fake_gen_fields', JSON.stringify(fields));
+      }
+
+      // Generate single value based on type
+      function generateFakeValue(type) {
+        const randItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+        const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+        const randFloat = (min, max, dec = 2) => (Math.random() * (max - min) + min).toFixed(dec);
+
+        switch (type) {
+          case 'uuid':
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+              return v.toString(16);
+            });
+          case 'name':
+            return `${randItem(DATA_POOL.firstnames)} ${randItem(DATA_POOL.lastnames)}`;
+          case 'firstname':
+            return randItem(DATA_POOL.firstnames);
+          case 'lastname':
+            return randItem(DATA_POOL.lastnames);
+          case 'email': {
+            const f = randItem(DATA_POOL.firstnames).toLowerCase();
+            const l = randItem(DATA_POOL.lastnames).toLowerCase();
+            return `${f}.${l}${randInt(10, 99)}@${randItem(DATA_POOL.domains)}`;
+          }
+          case 'phone':
+            return `+1 (${randInt(200, 999)}) 555-${randInt(1000, 9999)}`;
+          case 'username': {
+            const f = randItem(DATA_POOL.firstnames).toLowerCase();
+            return `${f}_${randItem(DATA_POOL.lastnames).toLowerCase().substring(0, 4)}${randInt(100, 999)}`;
+          }
+          case 'password': {
+            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
+            let pass = '';
+            for (let i = 0; i < 12; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            return pass;
+          }
+          case 'company':
+            return randItem(DATA_POOL.companies);
+          case 'job':
+            return randItem(DATA_POOL.jobs);
+          case 'address':
+            return `${randInt(100, 9999)} ${randItem(DATA_POOL.streets)} ${randItem(DATA_POOL.streetTypes)}`;
+          case 'city':
+            return randItem(DATA_POOL.cities);
+          case 'product':
+            return `${randItem(DATA_POOL.adjectives)} ${randItem(DATA_POOL.nouns)}`;
+          case 'price':
+            return `$${randFloat(10, 500)}`;
+          case 'category':
+            return randItem(DATA_POOL.categories);
+          case 'boolean':
+            return Math.random() > 0.3 ? 'true' : 'false';
+          case 'number':
+            return randInt(1, 10000).toString();
+          case 'lorem': {
+            let s = [];
+            const count = randInt(8, 15);
+            for (let i = 0; i < count; i++) s.push(randItem(DATA_POOL.loremWords));
+            const sent = s.join(' ');
+            return sent.charAt(0).toUpperCase() + sent.slice(1) + '.';
+          }
+          default:
+            return '';
+        }
+      }
+
+      function renderFieldsList() {
+        const container = document.getElementById('fields-container');
+        const countIndicator = document.getElementById('fields-count');
+        
+        container.innerHTML = '';
+        countIndicator.textContent = `${activeFields.length} field${activeFields.length === 1 ? '' : 's'}`;
+
+        activeFields.forEach((field, idx) => {
+          const row = document.createElement('div');
+          row.className = 'field-row';
+          row.dataset.index = idx;
+
+          row.innerHTML = `
+            <div class="field-row-drag" title="Reorder field">
+              <i data-lucide="grip-vertical" style="width: 14px; height: 14px;"></i>
+            </div>
+            <input type="text" class="form-control field-key-input" value="${field.key}" placeholder="key_name" required>
+            <select class="form-control field-type-select">
+              <option value="uuid" ${field.type === 'uuid' ? 'selected' : ''}>ID (UUID)</option>
+              <option value="name" ${field.type === 'name' ? 'selected' : ''}>Full Name</option>
+              <option value="firstname" ${field.type === 'firstname' ? 'selected' : ''}>First Name</option>
+              <option value="lastname" ${field.type === 'lastname' ? 'selected' : ''}>Last Name</option>
+              <option value="email" ${field.type === 'email' ? 'selected' : ''}>Email Address</option>
+              <option value="phone" ${field.type === 'phone' ? 'selected' : ''}>Phone Number</option>
+              <option value="username" ${field.type === 'username' ? 'selected' : ''}>Username</option>
+              <option value="password" ${field.type === 'password' ? 'selected' : ''}>Password</option>
+              <option value="company" ${field.type === 'company' ? 'selected' : ''}>Company Name</option>
+              <option value="job" ${field.type === 'job' ? 'selected' : ''}>Job Title</option>
+              <option value="address" ${field.type === 'address' ? 'selected' : ''}>Street Address</option>
+              <option value="city" ${field.type === 'city' ? 'selected' : ''}>City</option>
+              <option value="product" ${field.type === 'product' ? 'selected' : ''}>Product Name</option>
+              <option value="price" ${field.type === 'price' ? 'selected' : ''}>Price Range</option>
+              <option value="category" ${field.type === 'category' ? 'selected' : ''}>Category</option>
+              <option value="boolean" ${field.type === 'boolean' ? 'selected' : ''}>Boolean (T/F)</option>
+              <option value="number" ${field.type === 'number' ? 'selected' : ''}>Random Number</option>
+              <option value="lorem" ${field.type === 'lorem' ? 'selected' : ''}>Lorem Ipsum Text</option>
+            </select>
+            <button class="btn-field-delete" title="Remove Field">
+              <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+            </button>
+          `;
+
+          const keyInput = row.querySelector('.field-key-input');
+          const typeSelect = row.querySelector('.field-type-select');
+
+          keyInput.addEventListener('change', (e) => {
+            field.key = e.target.value.trim().replace(/\s+/g, '_');
+            saveHistoryPreferences(activeFields);
+          });
+
+          typeSelect.addEventListener('change', (e) => {
+            field.type = e.target.value;
+            saveHistoryPreferences(activeFields);
+          });
+
+          row.querySelector('.btn-field-delete').addEventListener('click', () => {
+            activeFields.splice(idx, 1);
+            saveHistoryPreferences(activeFields);
+            renderFieldsList();
+          });
+
+          container.appendChild(row);
+        });
+
+        lucide.createIcons();
+      }
+
+      function convertToCSV(data) {
+        if (data.length === 0) return '';
+        const headers = Object.keys(data[0]);
+        const csvRows = [
+          headers.join(','),
+          ...data.map(row => 
+            headers.map(field => {
+              const val = row[field] === null ? '' : String(row[field]);
+              // Escape double quotes and wrap values containing commas, quotes, or newlines
+              if (val.includes(',') || val.includes('"') || val.includes('\n')) {
+                return `"${val.replace(/"/g, '""')}"`;
+              }
+              return val;
+            }).join(',')
+          )
+        ];
+        return csvRows.join('\n');
+      }
+
+      function renderPreview() {
+        const previewBox = document.getElementById('preview-box');
+        const count = generatedDataset.length;
+
+        if (count === 0) {
+          previewBox.innerHTML = `
+            <div style="text-align: center; color: var(--text-muted); padding: 80px 20px;">
+              <i data-lucide="database" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
+              <p style="margin: 0; font-size: 14px; font-weight: 500;">No active dataset generated</p>
+              <p style="margin: 4px 0 0 0; font-size: 12px; opacity: 0.8;">Choose your options on the left and click "Generate Fake Data"</p>
+            </div>
+          `;
+          lucide.createIcons();
+          return;
+        }
+
+        if (activeTab === 'table') {
+          let headers = Object.keys(generatedDataset[0]);
+          let tableHtml = `
+            <div class="table-responsive">
+              <table class="fake-table">
+                <thead>
+                  <tr>
+                    ${headers.map(h => `<th>${h}</th>`).join('')}
+                  </tr>
+                </thead>
+                <tbody>
+                  ${generatedDataset.map(row => `
+                    <tr>
+                      ${headers.map(h => `<td title="${row[h]}">${row[h]}</td>`).join('')}
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `;
+          previewBox.innerHTML = tableHtml;
+        } else if (activeTab === 'json') {
+          previewBox.innerHTML = `<pre class="json-pre"><code>${JSON.stringify(generatedDataset, null, 2)}</code></pre>`;
+        } else if (activeTab === 'csv') {
+          const csvText = convertToCSV(generatedDataset);
+          previewBox.innerHTML = `<pre class="csv-pre"><code>${csvText}</code></pre>`;
+        }
+      }
+
+      function performGeneration() {
+        const recordCountInput = document.getElementById('records-count-input');
+        let count = parseInt(recordCountInput.value, 10);
+        if (isNaN(count) || count < 1) count = 1;
+        if (count > 1000) count = 1000;
+        recordCountInput.value = count;
+
+        if (activeFields.length === 0) {
+          window.showToast('Please add at least one field to your schema!');
+          return;
+        }
+
+        const start = performance.now();
+        generatedDataset = [];
+
+        for (let i = 0; i < count; i++) {
+          let row = {};
+          activeFields.forEach(field => {
+            row[field.key || 'field'] = generateFakeValue(field.type);
+          });
+          generatedDataset.push(row);
+        }
+
+        const end = performance.now();
+        const duration = (end - start).toFixed(1);
+
+        // Update stats
+        document.getElementById('generation-stats').textContent = `Generated ${count} records in ${duration}ms`;
+        
+        // Update size indicator
+        const jsonStr = JSON.stringify(generatedDataset);
+        const kbSize = (jsonStr.length / 1024).toFixed(1);
+        document.getElementById('data-size-indicator').textContent = `Dataset Size: ${kbSize} KB`;
+
+        // Enable buttons
+        document.getElementById('btn-copy-data').disabled = false;
+        document.getElementById('btn-download-json').disabled = false;
+        document.getElementById('btn-download-csv').disabled = false;
+
+        renderPreview();
+        window.showToast(`Successfully generated ${count} records!`);
+      }
+
+      // Add Field Event
+      document.getElementById('btn-add-field').addEventListener('click', () => {
+        const keySug = `field_${activeFields.length + 1}`;
+        activeFields.push({ key: keySug, type: 'name' });
+        saveHistoryPreferences(activeFields);
+        renderFieldsList();
+      });
+
+      // Generation trigger
+      document.getElementById('btn-generate-fake').addEventListener('click', performGeneration);
+
+      // Presets triggers
+      document.querySelectorAll('.preset-badge').forEach(badge => {
+        badge.addEventListener('click', (e) => {
+          const presetName = e.currentTarget.dataset.preset;
+          if (PRESETS_FIELDS[presetName]) {
+            activeFields = JSON.parse(JSON.stringify(PRESETS_FIELDS[presetName]));
+            saveHistoryPreferences(activeFields);
+            renderFieldsList();
+            window.showToast(`Loaded "${presetName}" schema template!`);
+          }
+        });
+      });
+
+      // Tabs mechanism
+      document.querySelectorAll('.preview-tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.preview-tab-btn').forEach(b => b.classList.remove('active'));
+          e.currentTarget.classList.add('active');
+          activeTab = e.currentTarget.dataset.tab;
+          renderPreview();
+        });
+      });
+
+      // Copy Action
+      document.getElementById('btn-copy-data').addEventListener('click', () => {
+        if (generatedDataset.length === 0) return;
+        
+        let textToCopy = '';
+        if (activeTab === 'csv') {
+          textToCopy = convertToCSV(generatedDataset);
+        } else {
+          textToCopy = JSON.stringify(generatedDataset, null, 2);
+        }
+
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            window.showToast('Copied dataset to clipboard!');
+          })
+          .catch(() => {
+            window.showToast('Copy failed. Try manual copy.');
+          });
+      });
+
+      // Download JSON
+      document.getElementById('btn-download-json').addEventListener('click', () => {
+        if (generatedDataset.length === 0) return;
+        const blob = new Blob([JSON.stringify(generatedDataset, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `fake-data-${Date.now()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        window.showToast('Downloaded JSON successfully.');
+      });
+
+      // Download CSV
+      document.getElementById('btn-download-csv').addEventListener('click', () => {
+        if (generatedDataset.length === 0) return;
+        const csvText = convertToCSV(generatedDataset);
+        const blob = new Blob([csvText], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `fake-data-${Date.now()}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        window.showToast('Downloaded CSV successfully.');
+      });
+
+      // Initialize
+      activeFields = getHistoryPreferences();
+      renderFieldsList();
+    
+      });
+    </script>
+  
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Picker, Converter & Harmony Suite - MultiTools Premium Web Utilities</title>
+  <meta name="description" content="An advanced interactive color engineering laboratory. Analyze WCAG contrast compliance, generate live click-to-apply harmonies, adjust RGB/HSL sliders, and export directly to Hex, RGB, HSL, CMYK, and HSV formats.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.354.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Clarity Tracking Script -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xl7p4suhj3");
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="logo" id="site-logo">
+        <i data-lucide="layers" id="logo-icon"></i> Multi<span>Tools</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link ">Home</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="tools-dropdown-toggle">
+            Tools <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+          </a>
+          <div class="dropdown-menu-container">
+            <div class="dropdown-menu-grid">
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="calculator"></i> Calculators</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/scientific-calculator.html">Scientific Calculator</a></li>
+                  <li><a href="../tools/loan-emi-calculator.html">Loan EMI Calculator</a></li>
+                  <li><a href="../tools/age-calculator.html">Age Calculator</a></li>
+                  <li><a href="../tools/bmi-calculator.html">BMI Calculator</a></li>
+                  <li><a href="../tools/unit-converter.html">Unit Converter</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="code"></i> Dev Utilities</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/qr-code-generator.html">QR Code Generator</a></li>
+                  <li><a href="../tools/password-generator.html">Password Generator</a></li>
+                  <li><a href="../tools/base64-encoder-decoder.html">Base64 Encoder/Decoder</a></li>
+                  <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                  <li><a href="../tools/hash-generator.html">SHA-256 & MD5 Generator</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="palette"></i> Design & Text</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/color-picker.html">Color Picker</a></li>
+                  <li><a href="../tools/css-gradient-generator.html">Gradient Generator</a></li>
+                  <li><a href="../tools/image-compressor.html">Image Compressor</a></li>
+                  <li><a href="../tools/word-counter.html">Word & Character Counter</a></li>
+                  <li><a href="../tools/stopwatch-timer.html">Stopwatch & Timer</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="../index.html#tools-section" class="dropdown-all-btn">
+                <span>View All Premium Tools (25 total)</span> <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../about.html" class="nav-link ">About</a></li>
+        <li><a href="../contact.html" class="nav-link ">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="light-icon" id="sun-icon"></i>
+          <i data-lucide="sun" class="dark-icon" id="moon-icon"></i>
+        </button>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <i data-lucide="menu" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="fade-in">
+    
+    <div class="container" style="margin-top: 20px;">
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <div class="breadcrumbs-separator"><i data-lucide="chevron-right"></i></div>
+        <span style="color:var(--text-primary);">Color Picker, Converter & Harmony Suite</span>
+      </div>
+
+      <div class="tool-layout">
+        <!-- Main Tool Column -->
+        <div class="tool-panel">
+          <h1 style="font-size:32px; margin-bottom:12px;">Color Picker, Converter & Harmony Suite</h1>
+          <p class="mb-32" style="color:var(--text-muted); font-size:15px;">An advanced interactive color engineering laboratory. Analyze WCAG contrast compliance, generate live click-to-apply harmonies, adjust RGB/HSL sliders, and export directly to Hex, RGB, HSL, CMYK, and HSV formats.</p>
+          
+          <div style="margin-top:20px;">
+            
+      <style>
+        .color-sl-board {
+          position: relative; width: 100%; height: 180px; border-radius: var(--radius-md);
+          cursor: crosshair; overflow: hidden; border: 1px solid var(--border-color);
+        }
+        .color-sl-cursor {
+          position: absolute; width: 12px; height: 12px; border-radius: 50%;
+          border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
+          transform: translate(-6px, -6px); pointer-events: none;
+        }
+        .custom-slider {
+          -webkit-appearance: none; appearance: none; width: 100%; height: 8px;
+          border-radius: var(--radius-full); outline: none; background: transparent;
+        }
+        .custom-slider::-webkit-slider-thumb {
+          -webkit-appearance: none; appearance: none; width: 16px; height: 16px;
+          border-radius: 50%; background: #fff; border: 2px solid var(--color-primary);
+          cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.3); transition: transform 0.1s;
+        }
+        .custom-slider::-webkit-slider-thumb:hover { transform: scale(1.25); }
+        .active-tab { border-color: var(--color-primary); color: var(--text-primary); }
+      </style>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Controls Column -->
+        <div class="lg:col-span-6 flex flex-col gap-4">
+          <div class="card p-5 flex flex-col gap-4">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Color Studio Canvas</h3>
+            
+            <!-- Interactive 2D Board -->
+            <div class="color-sl-board" id="color-sl-board">
+              <div class="absolute inset-0" id="color-sl-base" style="background-color: hsl(217, 100%, 50%);"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-white to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+              <div class="color-sl-cursor" id="color-sl-cursor" style="left: 91%; top: 40%;"></div>
+            </div>
+
+            <!-- Hue & Alpha Controls -->
+            <div class="flex flex-col gap-3">
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span>Hue Spectrum</span>
+                  <span><span id="slide-h-val">217</span>&deg;</span>
+                </div>
+                <input type="range" id="slide-h" class="custom-slider" min="0" max="360" value="217" style="background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);">
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span>Opacity</span>
+                  <span><span id="slide-a-val">100</span>%</span>
+                </div>
+                <div class="relative rounded-full h-2" style="background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%); background-size: 8px 8px; background-position: 0 0, 0 4px, 4px -4px, -4px 0px;">
+                  <input type="range" id="slide-a" class="custom-slider absolute inset-0 m-0 p-0 h-2" min="0" max="100" value="100">
+                </div>
+              </div>
+            </div>
+
+            <!-- Precise Slider Mode Tabs -->
+            <div class="border-b border-gray-200 dark:border-gray-800 flex gap-4 text-xs font-bold mb-1">
+              <button id="tab-rgb-btn" class="pb-2 border-b-2 active-tab" onclick="window.switchControlTab('rgb')">RGB Mode</button>
+              <button id="tab-hsl-btn" class="pb-2 border-b-2 border-transparent text-gray-400" onclick="window.switchControlTab('hsl')">HSL Mode</button>
+            </div>
+
+            <!-- RGB Sliders -->
+            <div id="panel-rgb" class="flex flex-col gap-2">
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-red-500">Red</span>
+                  <span id="slide-r-val">59</span>
+                </div>
+                <input type="range" id="slide-r" class="custom-slider" min="0" max="255" value="59">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-green-500">Green</span>
+                  <span id="slide-g-val">130</span>
+                </div>
+                <input type="range" id="slide-g" class="custom-slider" min="0" max="255" value="130">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-blue-500">Blue</span>
+                  <span id="slide-b-val">246</span>
+                </div>
+                <input type="range" id="slide-b" class="custom-slider" min="0" max="255" value="246">
+              </div>
+            </div>
+
+            <!-- HSL Sliders -->
+            <div id="panel-hsl" class="hidden flex flex-col gap-2">
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span>Saturation</span>
+                  <span><span id="slide-s-val">91</span>%</span>
+                </div>
+                <input type="range" id="slide-s" class="custom-slider" min="0" max="100" value="91">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span>Lightness</span>
+                  <span><span id="slide-l-val">60</span>%</span>
+                </div>
+                <input type="range" id="slide-l" class="custom-slider" min="0" max="100" value="60">
+              </div>
+            </div>
+
+            <!-- Input Field and Eyedropper -->
+            <div class="flex flex-col gap-1 mt-2">
+              <label class="text-xs font-semibold text-gray-500 dark:text-gray-400">Manual Hex / CSS Name</label>
+              <div class="flex gap-2">
+                <input type="text" id="manual-color-input" class="form-control font-mono text-sm uppercase flex-1" value="#3B82F6">
+                <button id="btn-eyedropper" class="btn btn-secondary p-2 flex items-center justify-center w-10 h-10 hidden" title="Pick color from screen">
+                  <i data-lucide="pipette" class="w-5 h-5"></i>
+                </button>
+                <div class="relative w-10 h-10 rounded border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer flex-shrink-0">
+                  <input type="color" id="main-color-picker" class="absolute -top-2 -left-2 w-14 h-14 border-0 cursor-pointer" value="#3b82f6">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tints, Shades & Tones -->
+          <div class="card p-5 flex flex-col gap-3">
+            <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300">Tints, Shades & Tones</h3>
+            <div>
+              <span class="text-xs font-medium text-gray-500 block mb-1">Tints (Lighter)</span>
+              <div class="grid grid-cols-10 gap-1.5" id="tints-container"></div>
+            </div>
+            <div>
+              <span class="text-xs font-medium text-gray-500 block mb-1">Shades (Darker)</span>
+              <div class="grid grid-cols-10 gap-1.5" id="shades-container"></div>
+            </div>
+            <div>
+              <span class="text-xs font-medium text-gray-500 block mb-1">Tones (Muted)</span>
+              <div class="grid grid-cols-10 gap-1.5" id="tones-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Previews & Analysis -->
+        <div class="lg:col-span-6 flex flex-col gap-4">
+          <!-- UI Component Playground -->
+          <div class="card p-5 flex flex-col gap-3">
+            <div class="flex justify-between items-center">
+              <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300">Live Component Preview</h3>
+              <div class="flex bg-gray-100 dark:bg-gray-800 p-0.5 rounded-md text-xs font-semibold">
+                <button id="btn-mock-light" class="px-2 py-1 rounded bg-white dark:bg-gray-700 shadow-sm" onclick="window.setMockTheme('light')">Light</button>
+                <button id="btn-mock-dark" class="px-2 py-1 rounded text-gray-500 dark:text-gray-400" onclick="window.setMockTheme('dark')">Dark</button>
+              </div>
+            </div>
+
+            <div id="mock-container" class="rounded-lg p-4 border border-gray-200 dark:border-gray-800 bg-white transition-all duration-300">
+              <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 mb-3">
+                <div class="flex items-center gap-2">
+                  <div id="mock-dot" class="w-2.5 h-2.5 rounded-full" style="background-color: #3b82f6;"></div>
+                  <span class="text-xs font-bold text-gray-900 dark:text-white" id="mock-app-name">ColorLab UI</span>
+                </div>
+                <span class="text-[9px] font-bold px-2 py-0.5 rounded-full text-white bg-green-500" id="mock-badge">Active</span>
+              </div>
+              <div>
+                <h4 id="mock-title" class="text-xs font-bold text-gray-800 dark:text-gray-200 mb-1">System Dashboard preview</h4>
+                <p class="text-[10px] text-gray-500 dark:text-gray-400 mb-3 leading-relaxed">This mockup adapts its background opacity, borders, and buttons directly using your color.</p>
+                
+                <div class="flex gap-2">
+                  <button id="mock-btn-primary" class="flex-1 py-1.5 px-3 text-[10px] font-bold rounded shadow transition-all duration-150 text-white" style="background-color: #3b82f6;">Primary Action</button>
+                  <button id="mock-btn-secondary" class="flex-1 py-1.5 px-3 text-[10px] font-bold rounded border transition-all duration-150" style="border-color: #3b82f6; color: #3b82f6;">Secondary</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3 text-center">
+              <div class="bg-gray-50 dark:bg-gray-800/50 p-2.5 rounded-md border border-gray-100 dark:border-gray-800">
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">White Contrast</p>
+                <div id="white-contrast-ratio" class="text-sm font-extrabold text-gray-800 dark:text-gray-200 mb-1">4.50:1</div>
+                <span id="white-wcag-badge" class="contrast-badge pass text-[9px] px-2 py-0.5 rounded-full font-bold">PASS</span>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-800/50 p-2.5 rounded-md border border-gray-100 dark:border-gray-800">
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Black Contrast</p>
+                <div id="black-contrast-ratio" class="text-sm font-extrabold text-gray-800 dark:text-gray-200 mb-1">4.50:1</div>
+                <span id="black-wcag-badge" class="contrast-badge fail text-[9px] px-2 py-0.5 rounded-full font-bold">FAIL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exports -->
+          <div class="card p-5 flex flex-col gap-3">
+            <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300">Format Exporter</h3>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2">
+                <span class="w-12 text-xs font-bold text-gray-400">HEX</span>
+                <input type="text" id="out-hex" class="form-control text-xs font-mono py-1 px-2 flex-1" readonly>
+                <button class="btn btn-secondary btn-sm text-[10px] py-1 px-2.5" onclick="copyColorField('out-hex', 'HEX')">Copy</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-12 text-xs font-bold text-gray-400">RGBA</span>
+                <input type="text" id="out-rgba" class="form-control text-xs font-mono py-1 px-2 flex-1" readonly>
+                <button class="btn btn-secondary btn-sm text-[10px] py-1 px-2.5" onclick="copyColorField('out-rgba', 'RGBA')">Copy</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-12 text-xs font-bold text-gray-400">HSLA</span>
+                <input type="text" id="out-hsla" class="form-control text-xs font-mono py-1 px-2 flex-1" readonly>
+                <button class="btn btn-secondary btn-sm text-[10px] py-1 px-2.5" onclick="copyColorField('out-hsla', 'HSLA')">Copy</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-12 text-xs font-bold text-gray-400">CMYK</span>
+                <input type="text" id="out-cmyk" class="form-control text-xs font-mono py-1 px-2 flex-1" readonly>
+                <button class="btn btn-secondary btn-sm text-[10px] py-1 px-2.5" onclick="copyColorField('out-cmyk', 'CMYK')">Copy</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-12 text-xs font-bold text-gray-400">HSV</span>
+                <input type="text" id="out-hsv" class="form-control text-xs font-mono py-1 px-2 flex-1" readonly>
+                <button class="btn btn-secondary btn-sm text-[10px] py-1 px-2.5" onclick="copyColorField('out-hsv', 'HSV')">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Harmonies -->
+          <div class="card p-5 flex flex-col gap-3">
+            <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300">Theory-Based Harmonies</h3>
+            <div class="flex flex-col gap-3 text-xs">
+              <div>
+                <span class="text-gray-400 block mb-1">Complementary</span>
+                <div class="grid grid-cols-2 gap-1.5" id="harmony-comp"></div>
+              </div>
+              <div>
+                <span class="text-gray-400 block mb-1">Analogous</span>
+                <div class="grid grid-cols-3 gap-1.5" id="harmony-anal"></div>
+              </div>
+              <div>
+                <span class="text-gray-400 block mb-1">Triadic</span>
+                <div class="grid grid-cols-3 gap-1.5" id="harmony-tri"></div>
+              </div>
+              <div>
+                <span class="text-gray-400 block mb-1">Monochromatic</span>
+                <div class="grid grid-cols-4 gap-1.5" id="harmony-mono"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curated Palettes -->
+          <div class="card p-5 flex flex-col gap-3">
+            <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300">Designer Themes</h3>
+            <div class="grid grid-cols-2 gap-2 text-[10px] font-bold" id="preset-palettes-container"></div>
+          </div>
+
+          <!-- History / Favorites -->
+          <div class="card p-5 flex flex-col gap-3">
+            <div class="flex justify-between items-center">
+              <h3 class="text-sm font-bold text-gray-700 dark:text-gray-300">Session Palettes</h3>
+              <button id="btn-clear-palette" class="text-[10px] text-red-500 font-bold hover:underline">Clear Saved</button>
+            </div>
+            <div>
+              <p class="text-[10px] text-gray-400 mb-2">Saved Palette History (Up to 16 favorite colors)</p>
+              <div class="flex flex-wrap gap-2" id="saved-palette-swatches"></div>
+              <button id="btn-save-to-palette" class="btn btn-primary btn-sm w-full mt-3 text-xs">
+                <i data-lucide="plus" class="w-3.5 h-3.5 mr-1 inline-block align-text-bottom"></i>Save Current Color
+              </button>
+            </div>
+            <div class="mt-2 border-t border-gray-100 dark:border-gray-800 pt-3">
+              <p class="text-[10px] text-gray-400 mb-2">Recently Selected Colors</p>
+              <div class="flex flex-wrap gap-2" id="recent-palette-swatches"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="card" style="height:fit-content; padding:24px;">
+          <h3 class="mb-16">Quick Instructions</h3>
+          <ul class="footer-links" style="padding-left:16px; list-style:disc; color:var(--text-secondary); margin-bottom:24px; font-size:14px; line-height:1.6;">
+            <li>Fill in all parameter sliders or text input boxes.</li>
+            <li>Calculations run entirely safe and local inside your browser.</li>
+            <li>Use the standard Copy buttons to copy outputs instantly.</li>
+          </ul>
+
+          <h3 class="mb-16">Security & Privacy</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.5;">
+            Our suite executes 100% locally. None of your data, text inputs, password profiles, or uploaded images are ever sent to external cloud servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- SEO Informational Block -->
+      <div class="tool-info-section">
+        <div class="tool-info-block">
+          <h3>Why use the online Color Picker, Converter & Harmony Suite?</h3>
+          <p>This premium Color Picker, Converter & Harmony Suite represents a client-side tool optimized for immediate results. Designed with lightweight modern CSS frames and standard calculations, it loads within milliseconds and operates offline without lag.</p>
+        </div>
+        <div class="tool-info-block">
+          <h3>Key Features & Advantages</h3>
+          <p>Enjoy absolute client-side protection: since no files or texts are transferred to databases, it remains the safest portal. Works fluently across mobile touch devices, iPads, laptops, and desktop browsers alike.</p>
+        </div>
+      </div>
+    </div>
+  
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div>
+        <a href="../index.html" class="logo mb-16">
+          <i data-lucide="layers"></i> Multi<span>Tools</span>
+        </a>
+        <p class="footer-brand-desc">
+          Your premium all-in-one suite of 25 secure, responsive, client-side tools running entirely inside your browser. No server storage, no limits.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../tools/scientific-calculator.html" class="footer-link">Scientific Calculator</a></li>
+          <li><a href="../tools/qr-code-generator.html" class="footer-link">QR Code Generator</a></li>
+          <li><a href="../tools/image-compressor.html" class="footer-link">Image Compressor</a></li>
+          <li><a href="../tools/password-generator.html" class="footer-link">Password Generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../contact.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MultiTools. All rights reserved. 100% browser-safe client-side software.</p>
+      <div style="display: flex; gap: 16px;">
+        <a href="../privacy-policy.html" class="footer-link">Privacy</a>
+        <a href="../disclaimer.html" class="footer-link">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+      const picker = document.getElementById('main-color-picker');
+      const manualColorInput = document.getElementById('manual-color-input');
+      const btnEyedropper = document.getElementById('btn-eyedropper');
+      
+      const rSlide = document.getElementById('slide-r');
+      const gSlide = document.getElementById('slide-g');
+      const bSlide = document.getElementById('slide-b');
+      
+      const rValLbl = document.getElementById('slide-r-val');
+      const gValLbl = document.getElementById('slide-g-val');
+      const bValLbl = document.getElementById('slide-b-val');
+      
+      const hSlide = document.getElementById('slide-h');
+      const sSlide = document.getElementById('slide-s');
+      const lSlide = document.getElementById('slide-l');
+      const aSlide = document.getElementById('slide-a');
+      
+      const hValLbl = document.getElementById('slide-h-val');
+      const sValLbl = document.getElementById('slide-s-val');
+      const lValLbl = document.getElementById('slide-l-val');
+      const aValLbl = document.getElementById('slide-a-val');
+      
+      const boardBase = document.getElementById('color-sl-base');
+      const boardCursor = document.getElementById('color-sl-cursor');
+      const board = document.getElementById('color-sl-board');
+      
+      const whiteContrastRatio = document.getElementById('white-contrast-ratio');
+      const blackContrastRatio = document.getElementById('black-contrast-ratio');
+      const whiteWcagBadge = document.getElementById('white-wcag-badge');
+      const blackWcagBadge = document.getElementById('black-wcag-badge');
+      
+      const outHex = document.getElementById('out-hex');
+      const outRgba = document.getElementById('out-rgba');
+      const outHsla = document.getElementById('out-hsla');
+      const outCmyk = document.getElementById('out-cmyk');
+      const outHsv = document.getElementById('out-hsv');
+      
+      const mockPrimaryBtn = document.getElementById('mock-btn-primary');
+      const mockSecondaryBtn = document.getElementById('mock-btn-secondary');
+      const mockDot = document.getElementById('mock-dot');
+      const mockBadge = document.getElementById('mock-badge');
+      
+      const btnSave = document.getElementById('btn-save-to-palette');
+      const btnClear = document.getElementById('btn-clear-palette');
+      const paletteContainer = document.getElementById('saved-palette-swatches');
+      const recentContainer = document.getElementById('recent-palette-swatches');
+      
+      let curH = 217;
+      let curS = 91;
+      let curV = 96;
+      let curA = 100;
+      let recentColors = [];
+
+      // Conversions
+      function hsvToRgb(h, s, v) {
+        s /= 100; v /= 100;
+        let c = v * s;
+        let x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+        let m = v - c;
+        let r = 0, g = 0, b = 0;
+        if (h >= 0 && h < 60) { r = c; g = x; b = 0; }
+        else if (h >= 60 && h < 120) { r = x; g = c; b = 0; }
+        else if (h >= 120 && h < 180) { r = 0; g = c; b = x; }
+        else if (h >= 180 && h < 240) { r = 0; g = x; b = c; }
+        else if (h >= 240 && h < 300) { r = x; g = 0; b = c; }
+        else if (h >= 300 && h <= 360) { r = c; g = 0; b = x; }
+        return { r: Math.round((r + m) * 255), g: Math.round((g + m) * 255), b: Math.round((b + m) * 255) };
+      }
+
+      function rgbToHsv(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        const d = max - min;
+        let h = 0, s = max === 0 ? 0 : d / max, v = max;
+        if (max !== min) {
+          switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+          h /= 6;
+        }
+        return { h: Math.round(h * 360), s: Math.round(s * 100), v: Math.round(v * 100) };
+      }
+
+      function rgbToHsl(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+        if (max === min) { h = s = 0; }
+        else {
+          const d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+          h /= 6;
+        }
+        return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+      }
+
+      function hslToRgb(h, s, l) {
+        h /= 360; s /= 100; l /= 100;
+        let r, g, b;
+        if (s === 0) { r = g = b = l; }
+        else {
+          const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1/6) return p + (q - p) * 6 * t;
+            if (t < 1/2) return q;
+            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+          };
+          const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+          const p = 2 * l - q;
+          r = hue2rgb(p, q, h + 1/3);
+          g = hue2rgb(p, q, h);
+          b = hue2rgb(p, q, h - 1/3);
+        }
+        return { r: Math.round(r * 255), g: Math.round(g * 255), b: Math.round(b * 255) };
+      }
+
+      // RGB to CMYK
+      function rgbToCmyk(r, g, b) {
+        let c = 1 - (r / 255);
+        let m = 1 - (g / 255);
+        let y = 1 - (b / 255);
+        let k = Math.min(c, m, y);
+
+        if (k === 1) {
+          return { c: 0, m: 0, y: 0, k: 100 };
+        }
+        c = Math.round(((c - k) / (1 - k)) * 100);
+        m = Math.round(((m - k) / (1 - k)) * 100);
+        y = Math.round(((y - k) / (1 - k)) * 100);
+        k = Math.round(k * 100);
+
+        return { c, m, y, k };
+      }
+
+      function rgbToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      }
+
+      function parseColor(str) {
+        str = str.trim(); if (!str) return null;
+        const dummy = document.createElement('div');
+        dummy.style.color = str; document.body.appendChild(dummy);
+        const computed = window.getComputedStyle(dummy).color;
+        document.body.removeChild(dummy);
+        if (computed === 'rgba(0, 0, 0, 0)' || computed === 'transparent') {
+          if (/^[0-9a-fA-F]{3,8}$/.test(str)) return parseColor('#' + str);
+          return null;
+        }
+        const match = computed.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+        if (match) {
+          return {
+            r: parseInt(match[1]), g: parseInt(match[2]), b: parseInt(match[3]),
+            a: match[4] !== undefined ? Math.round(parseFloat(match[4]) * 100) : 100
+          };
+        }
+        return null;
+      }
+
+      // Sync views
+      function syncAndRenderAll(source) {
+        const rgb = hsvToRgb(curH, curS, curV);
+        const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+        const baseHex = rgbToHex(rgb.r, rgb.g, rgb.b);
+        const fullHex = curA === 100 ? baseHex : baseHex + Math.round((curA / 100) * 255).toString(16).padStart(2, '0');
+        
+        if (source !== 'hue') hSlide.value = curH;
+        if (source !== 'alpha') aSlide.value = curA;
+        if (source !== 'rgb') {
+          rSlide.value = rgb.r;
+          gSlide.value = rgb.g;
+          bSlide.value = rgb.b;
+        }
+        if (source !== 'hsl') {
+          sSlide.value = hsl.s;
+          lSlide.value = hsl.l;
+        }
+        
+        hValLbl.textContent = curH;
+        aValLbl.textContent = curA;
+        rValLbl.textContent = rgb.r;
+        gValLbl.textContent = rgb.g;
+        bValLbl.textContent = rgb.b;
+        sValLbl.textContent = hsl.s;
+        lValLbl.textContent = hsl.l;
+        
+        if (source !== 'manual' && document.activeElement !== manualColorInput) {
+          manualColorInput.value = fullHex.toUpperCase();
+        }
+        picker.value = baseHex;
+        
+        boardBase.style.backgroundColor = 'hsl(' + curH + ', 100%, 50%)';
+        if (source !== 'board') {
+          boardCursor.style.left = curS + '%';
+          boardCursor.style.top = (100 - curV) + '%';
+        }
+        
+        rSlide.style.background = 'linear-gradient(to right, rgb(0, ' + rgb.g + ', ' + rgb.b + '), rgb(255, ' + rgb.g + ', ' + rgb.b + '))';
+        gSlide.style.background = 'linear-gradient(to right, rgb(' + rgb.r + ', 0, ' + rgb.b + '), rgb(' + rgb.r + ', 255, ' + rgb.b + '))';
+        bSlide.style.background = 'linear-gradient(to right, rgb(' + rgb.r + ', ' + rgb.g + ', 0), rgb(' + rgb.r + ', ' + rgb.g + ', 255))';
+        
+        sSlide.style.background = 'linear-gradient(to right, hsl(' + curH + ', 0%, ' + hsl.l + '%), hsl(' + curH + ', 100%, ' + hsl.l + '%))';
+        lSlide.style.background = 'linear-gradient(to right, #000, hsl(' + curH + ', ' + hsl.s + '%, 50%), #fff)';
+        
+        aSlide.style.background = 'linear-gradient(to right, rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 0), rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 1))';
+        
+        outHex.value = fullHex.toUpperCase();
+        outRgba.value = 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + (curA/100).toFixed(2) + ')';
+        outHsla.value = 'hsla(' + hsl.h + ', ' + hsl.s + '%, ' + hsl.l + '%, ' + (curA/100).toFixed(2) + ')';
+        outHsv.value = 'hsv(' + curH + ', ' + curS + '%, ' + curV + '%)';
+        const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+        outCmyk.value = 'cmyk(' + cmyk.c + '%, ' + cmyk.m + '%, ' + cmyk.y + '%, ' + cmyk.k + '%)';
+        
+        const activeColorWithOpacity = 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + (curA/100) + ')';
+        mockPrimaryBtn.style.backgroundColor = activeColorWithOpacity;
+        mockSecondaryBtn.style.borderColor = activeColorWithOpacity;
+        mockSecondaryBtn.style.color = activeColorWithOpacity;
+        mockDot.style.backgroundColor = activeColorWithOpacity;
+        mockBadge.style.backgroundColor = activeColorWithOpacity;
+        
+        const lum = getRelativeLuminance(rgb.r, rgb.g, rgb.b);
+        const wRatio = getContrastRatio(lum, 1.0);
+        const bRatio = getContrastRatio(lum, 0.0);
+        
+        mockPrimaryBtn.style.color = wRatio > bRatio ? '#ffffff' : '#0f172a';
+        
+        whiteContrastRatio.textContent = wRatio.toFixed(2) + ':1';
+        blackContrastRatio.textContent = bRatio.toFixed(2) + ':1';
+        updateBadge(whiteWcagBadge, wRatio);
+        updateBadge(blackWcagBadge, bRatio);
+        
+        renderTintsShadesTones(rgb.r, rgb.g, rgb.b);
+        renderTheoryHarmonies(curH, hsl.s, hsl.l);
+      }
+
+      function getRelativeLuminance(r, g, b) {
+        const rs = r / 255, gs = g / 255, bs = b / 255;
+        const rLinear = rs <= 0.03928 ? rs / 12.92 : Math.pow((rs + 0.055) / 1.055, 2.4);
+        const gLinear = gs <= 0.03928 ? gs / 12.92 : Math.pow((gs + 0.055) / 1.055, 2.4);
+        const bLinear = bs <= 0.03928 ? bs / 12.92 : Math.pow((bs + 0.055) / 1.055, 2.4);
+        return 0.2126 * rLinear + 0.7152 * gLinear + 0.0722 * bLinear;
+      }
+
+      // Calculate Contrast ratio
+      function getContrastRatio(l1, l2) {
+        const lighter = Math.max(l1, l2), darker = Math.min(l1, l2);
+        return (lighter + 0.05) / (darker + 0.05);
+      }
+
+      function updateBadge(badgeEl, ratio) {
+        if (ratio >= 7) {
+          badgeEl.textContent = 'AAA PASS'; badgeEl.className = 'contrast-badge pass text-[9px] px-2 py-0.5 rounded-full font-bold bg-green-500 text-white';
+        } else if (ratio >= 4.5) {
+          badgeEl.textContent = 'AA PASS'; badgeEl.className = 'contrast-badge pass text-[9px] px-2 py-0.5 rounded-full font-bold bg-green-500 text-white';
+        } else if (ratio >= 3) {
+          badgeEl.textContent = 'AA LARGE'; badgeEl.className = 'contrast-badge text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-500 text-white';
+        } else {
+          badgeEl.textContent = 'FAIL'; badgeEl.className = 'contrast-badge fail text-[9px] px-2 py-0.5 rounded-full font-bold bg-red-500 text-white';
+        }
+      }
+
+      // Drag Board Handler
+      let isDraggingBoard = false;
+      function handleBoardClick(e) {
+        const rect = board.getBoundingClientRect();
+        let x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        let y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+        x = Math.max(0, Math.min(rect.width, x));
+        y = Math.max(0, Math.min(rect.height, y));
+        curS = Math.round((x / rect.width) * 100);
+        curV = Math.round((1 - (y / rect.height)) * 100);
+        boardCursor.style.left = (x / rect.width * 100) + '%';
+        boardCursor.style.top = (y / rect.height * 100) + '%';
+        syncAndRenderAll('board');
+      }
+
+      board.addEventListener('mousedown', (e) => { isDraggingBoard = true; handleBoardClick(e); });
+      document.addEventListener('mousemove', (e) => { if (isDraggingBoard) handleBoardClick(e); });
+      document.addEventListener('mouseup', () => { if (isDraggingBoard) { isDraggingBoard = false; addRecentColor(picker.value); } });
+      board.addEventListener('touchstart', (e) => { isDraggingBoard = true; handleBoardClick(e); });
+      document.addEventListener('touchmove', (e) => { if (isDraggingBoard) { e.preventDefault(); handleBoardClick(e); } }, { passive: false });
+      document.addEventListener('touchend', () => { if (isDraggingBoard) { isDraggingBoard = false; addRecentColor(picker.value); } });
+
+      // Sliders & Controls listeners
+      hSlide.addEventListener('input', () => { curH = parseInt(hSlide.value); syncAndRenderAll('hue'); });
+      hSlide.addEventListener('change', () => addRecentColor(picker.value));
+      aSlide.addEventListener('input', () => { curA = parseInt(aSlide.value); syncAndRenderAll('alpha'); });
+      aSlide.addEventListener('change', () => addRecentColor(picker.value));
+
+      [rSlide, gSlide, bSlide].forEach(s => s.addEventListener('input', () => {
+        const r = parseInt(rSlide.value), g = parseInt(gSlide.value), b = parseInt(bSlide.value);
+        const hsv = rgbToHsv(r, g, b);
+        curH = hsv.h; curS = hsv.s; curV = hsv.v;
+        syncAndRenderAll('rgb');
+      }));
+      [rSlide, gSlide, bSlide].forEach(s => s.addEventListener('change', () => addRecentColor(picker.value)));
+
+      [sSlide, lSlide].forEach(s => s.addEventListener('input', () => {
+        const sat = parseInt(sSlide.value), lig = parseInt(lSlide.value);
+        const rgb = hslToRgb(curH, sat, lig);
+        const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+        curH = hsv.h; curS = hsv.s; curV = hsv.v;
+        syncAndRenderAll('hsl');
+      }));
+      [sSlide, lSlide].forEach(s => s.addEventListener('change', () => addRecentColor(picker.value)));
+
+      // Picker & manual inputs
+      picker.addEventListener('input', () => {
+        const hex = picker.value;
+        const parsed = parseColor(hex);
+        if (parsed) {
+          const hsv = rgbToHsv(parsed.r, parsed.g, parsed.b);
+          curH = hsv.h; curS = hsv.s; curV = hsv.v;
+          syncAndRenderAll('picker');
+        }
+      });
+      picker.addEventListener('change', () => addRecentColor(picker.value));
+
+      manualColorInput.addEventListener('input', () => {
+        const parsed = parseColor(manualColorInput.value);
+        if (parsed) {
+          const hsv = rgbToHsv(parsed.r, parsed.g, parsed.b);
+          curH = hsv.h; curS = hsv.s; curV = hsv.v; curA = parsed.a;
+          syncAndRenderAll('manual');
+        }
+      });
+      manualColorInput.addEventListener('change', () => {
+        const parsed = parseColor(manualColorInput.value);
+        if (parsed) addRecentColor(rgbToHex(parsed.r, parsed.g, parsed.b));
+      });
+
+      // Tabs & Mock Toggles
+      window.switchControlTab = (mode) => {
+        const panelRgb = document.getElementById('panel-rgb');
+        const panelHsl = document.getElementById('panel-hsl');
+        const tabRgbBtn = document.getElementById('tab-rgb-btn');
+        const tabHslBtn = document.getElementById('tab-hsl-btn');
+        if (mode === 'rgb') {
+          panelRgb.classList.remove('hidden'); panelHsl.classList.add('hidden');
+          tabRgbBtn.className = 'pb-2 border-b-2 active-tab'; tabHslBtn.className = 'pb-2 border-b-2 border-transparent text-gray-400';
+        } else {
+          panelRgb.classList.add('hidden'); panelHsl.classList.remove('hidden');
+          tabRgbBtn.className = 'pb-2 border-b-2 border-transparent text-gray-400'; tabHslBtn.className = 'pb-2 border-b-2 active-tab';
+        }
+      };
+
+      window.setMockTheme = (theme) => {
+        const container = document.getElementById('mock-container');
+        const btnLight = document.getElementById('btn-mock-light');
+        const btnDark = document.getElementById('btn-mock-dark');
+        const mockAppName = document.getElementById('mock-app-name');
+        const mockTitle = document.getElementById('mock-title');
+        if (theme === 'light') {
+          container.className = 'rounded-lg p-4 border border-gray-200 bg-white transition-all duration-300';
+          mockAppName.className = 'text-xs font-bold text-gray-900';
+          mockTitle.className = 'text-xs font-bold text-gray-800 mb-1';
+          btnLight.className = 'px-2 py-1 rounded bg-white dark:bg-gray-700 shadow-sm font-bold';
+          btnDark.className = 'px-2 py-1 rounded text-gray-400 hover:text-gray-600 font-bold';
+        } else {
+          container.className = 'rounded-lg p-4 border border-gray-800 bg-gray-900 transition-all duration-300';
+          mockAppName.className = 'text-xs font-bold text-white';
+          mockTitle.className = 'text-xs font-bold text-gray-100 mb-1';
+          btnLight.className = 'px-2 py-1 rounded text-gray-500 hover:text-gray-400 font-bold';
+          btnDark.className = 'px-2 py-1 rounded bg-gray-700 shadow-sm font-bold text-white';
+        }
+      };
+
+      // Set Picked Color Globals
+      window.setPickedColor = (hexValue) => {
+        const parsed = parseColor(hexValue);
+        if (parsed) {
+          const hsv = rgbToHsv(parsed.r, parsed.g, parsed.b);
+          curH = hsv.h; curS = hsv.s; curV = hsv.v; curA = parsed.a;
+          syncAndRenderAll('preset');
+          addRecentColor(hexValue);
+        }
+      };
+
+      // Copy Fields Helper
+      window.copyColorField = (elementId, formatName) => {
+        const input = document.getElementById(elementId);
+        if (input && input.value) {
+          navigator.clipboard.writeText(input.value);
+          window.showToast('Copied ' + formatName + ' format: ' + input.value);
+        }
+      };
+
+      // Tints & Shades Renderer
+      function renderTintsShadesTones(r, g, b) {
+        const tintsCont = document.getElementById('tints-container');
+        const shadesCont = document.getElementById('shades-container');
+        const tonesCont = document.getElementById('tones-container');
+        tintsCont.innerHTML = ''; shadesCont.innerHTML = ''; tonesCont.innerHTML = '';
+        const factors = [0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.8, 0.88, 0.94, 0.98];
+        factors.forEach(f => {
+          createSwatch(tintsCont, Math.round(r + (255 - r) * f), Math.round(g + (255 - g) * f), Math.round(b + (255 - b) * f));
+          createSwatch(shadesCont, Math.round(r * (1 - f)), Math.round(g * (1 - f)), Math.round(b * (1 - f)));
+          createSwatch(tonesCont, Math.round(r + (128 - r) * f), Math.round(g + (128 - g) * f), Math.round(b + (128 - b) * f));
+        });
+      }
+
+      function createSwatch(container, r, g, b) {
+        const hex = rgbToHex(r, g, b);
+        const swatch = document.createElement('div');
+        swatch.className = 'h-6 rounded cursor-pointer border border-gray-100 dark:border-gray-800 transition-transform duration-100 hover:scale-110';
+        swatch.style.backgroundColor = hex; swatch.title = hex;
+        swatch.onclick = () => window.setPickedColor(hex);
+        container.appendChild(swatch);
+      }
+
+      // Theory Harmonies Renderer
+      function renderTheoryHarmonies(h, s, l) {
+        const comp = document.getElementById('harmony-comp');
+        const anal = document.getElementById('harmony-anal');
+        const tri = document.getElementById('harmony-tri');
+        const mono = document.getElementById('harmony-mono');
+        comp.innerHTML = ''; anal.innerHTML = ''; tri.innerHTML = ''; mono.innerHTML = '';
+        
+        createHarmonySwatch(comp, h, s, l);
+        createHarmonySwatch(comp, (h + 180) % 360, s, l);
+        
+        createHarmonySwatch(anal, (h + 330) % 360, s, l);
+        createHarmonySwatch(anal, h, s, l);
+        createHarmonySwatch(anal, (h + 30) % 360, s, l);
+        
+        createHarmonySwatch(tri, h, s, l);
+        createHarmonySwatch(tri, (h + 120) % 360, s, l);
+        createHarmonySwatch(tri, (h + 240) % 360, s, l);
+        
+        createHarmonySwatch(mono, h, s, Math.max(12, l - 24));
+        createHarmonySwatch(mono, h, s, Math.max(25, l - 12));
+        createHarmonySwatch(mono, h, s, Math.min(85, l + 12));
+        createHarmonySwatch(mono, h, s, Math.min(95, l + 24));
+      }
+
+      function createHarmonySwatch(container, h, s, l) {
+        const rgb = hslToRgb(h, s, l);
+        const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+        const swatch = document.createElement('div');
+        swatch.className = 'harmony-swatch h-11 rounded cursor-pointer border border-gray-100 dark:border-gray-800 transition-all duration-150 hover:scale-105 flex items-end justify-center pb-1';
+        swatch.style.backgroundColor = hex;
+        swatch.onclick = () => window.setPickedColor(hex);
+        const span = document.createElement('span');
+        span.className = 'text-[9px] bg-black/60 text-white px-1 rounded font-mono font-bold pointer-events-none';
+        span.textContent = hex.toUpperCase();
+        swatch.appendChild(span);
+        container.appendChild(swatch);
+      }
+
+      // Designer presets
+      const designerPresets = [
+        { name: 'Modern Indigo', colors: ['#6366F1', '#4F46E5', '#818CF8', '#C7D2FE', '#EEF2FF'] },
+        { name: 'Neon Cyberpunk', colors: ['#FF007F', '#00F0FF', '#39FF14', '#9D00FF', '#FFEB3B'] },
+        { name: 'Nordic Forest', colors: ['#2E4F4F', '#0E8388', '#CBE4DE', '#2C3333', '#A5C9CA'] },
+        { name: 'Warm Autumn', colors: ['#8A301E', '#E25822', '#F28C28', '#F4C430', '#556B2F'] },
+        { name: 'Pastel Dreams', colors: ['#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7', '#C7CEEA'] },
+        { name: 'Sunset Glow', colors: ['#FD5E53', '#FFE4E1', '#E0115F', '#FF7518', '#66023C'] }
+      ];
+
+      function renderPresets() {
+        const container = document.getElementById('preset-palettes-container');
+        container.innerHTML = '';
+        designerPresets.forEach(preset => {
+          const card = document.createElement('div');
+          card.className = 'p-2 rounded-md border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 cursor-pointer text-center hover:scale-[1.02] transition-transform duration-100';
+          let swHTML = '<div class="flex h-4 rounded overflow-hidden mt-1">';
+          preset.colors.forEach(color => {
+            swHTML += '<div class="flex-1" style="background-color: ' + color + ';" title="' + color + '" onclick="event.stopPropagation(); window.setPickedColor(\'' + color + '\');"></div>';
+          });
+          swHTML += '</div>';
+          card.innerHTML = '<span class="text-[10px] text-gray-500 dark:text-gray-400 font-bold">' + preset.name + '</span>' + swHTML;
+          card.onclick = () => window.setPickedColor(preset.colors[0]);
+          container.appendChild(card);
+        });
+      }
+
+      // Recent colors management
+      function addRecentColor(hex) {
+        hex = hex.toUpperCase().slice(0, 7);
+        if (recentColors[0] === hex) return;
+        recentColors = recentColors.filter(c => c !== hex);
+        recentColors.unshift(hex);
+        if (recentColors.length > 12) recentColors.pop();
+        renderRecentColors();
+      }
+
+      function renderRecentColors() {
+        recentContainer.innerHTML = '';
+        recentColors.forEach(color => {
+          const item = document.createElement('div');
+          item.className = 'w-7 h-7 rounded-full cursor-pointer border-2 border-white dark:border-gray-800 hover:scale-110 transition-transform duration-75 shadow-sm';
+          item.style.backgroundColor = color; item.title = color;
+          item.onclick = () => window.setPickedColor(color);
+          recentContainer.appendChild(item);
+        });
+      }
+
+      // Palette History management
+      function loadPaletteHistory() {
+        const saved = JSON.parse(localStorage.getItem('multi_saved_palette') || '[]');
+        paletteContainer.innerHTML = '';
+        if (saved.length === 0) {
+          paletteContainer.innerHTML = '<span class="text-[11px] text-gray-400 italic">No saved colors in this palette.</span>';
+          return;
+        }
+        saved.forEach(color => {
+          const item = document.createElement('div');
+          item.className = 'w-7 h-7 rounded-full cursor-pointer border-2 border-white dark:border-gray-800 hover:scale-110 transition-transform duration-75 shadow-sm';
+          item.style.backgroundColor = color; item.title = color;
+          item.onclick = () => window.setPickedColor(color);
+          paletteContainer.appendChild(item);
+        });
+      }
+
+      btnSave.addEventListener('click', () => {
+        let saved = JSON.parse(localStorage.getItem('multi_saved_palette') || '[]');
+        const current = outHex.value.slice(0, 7);
+        if (saved.includes(current)) {
+          window.showToast('Color is already in your palette!'); return;
+        }
+        saved.unshift(current);
+        if (saved.length > 16) saved.pop();
+        localStorage.setItem('multi_saved_palette', JSON.stringify(saved));
+        window.showToast('Saved to palette!');
+        loadPaletteHistory();
+      });
+
+      btnClear.addEventListener('click', () => {
+        localStorage.removeItem('multi_saved_palette');
+        window.showToast('Palette history cleared.');
+        loadPaletteHistory();
+      });
+
+      // Eyedropper API
+      if (window.EyeDropper) {
+        btnEyedropper.classList.remove('hidden');
+        const eyeDropper = new window.EyeDropper();
+        btnEyedropper.addEventListener('click', () => {
+          eyeDropper.open().then(result => {
+            window.setPickedColor(result.sRGBHex);
+          }).catch(() => {});
+        });
+      }
+
+      // Kickstart
+      syncAndRenderAll();
+      loadPaletteHistory();
+      renderRecentColors();
+      renderPresets();
+    
+      });
+    </script>
+  
+</body>
+</html>

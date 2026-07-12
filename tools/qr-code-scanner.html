@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Scanner - MultiTools Premium Web Utilities</title>
+  <meta name="description" content="Instantly decode QR codes in real-time using your webcam/device camera or by uploading any image file. Operates 100% client-side for maximum privacy.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.354.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Clarity Tracking Script -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xl7p4suhj3");
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="logo" id="site-logo">
+        <i data-lucide="layers" id="logo-icon"></i> Multi<span>Tools</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link ">Home</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="tools-dropdown-toggle">
+            Tools <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+          </a>
+          <div class="dropdown-menu-container">
+            <div class="dropdown-menu-grid">
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="calculator"></i> Calculators</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/scientific-calculator.html">Scientific Calculator</a></li>
+                  <li><a href="../tools/loan-emi-calculator.html">Loan EMI Calculator</a></li>
+                  <li><a href="../tools/age-calculator.html">Age Calculator</a></li>
+                  <li><a href="../tools/bmi-calculator.html">BMI Calculator</a></li>
+                  <li><a href="../tools/unit-converter.html">Unit Converter</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="code"></i> Dev Utilities</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/qr-code-generator.html">QR Code Generator</a></li>
+                  <li><a href="../tools/password-generator.html">Password Generator</a></li>
+                  <li><a href="../tools/base64-encoder-decoder.html">Base64 Encoder/Decoder</a></li>
+                  <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                  <li><a href="../tools/hash-generator.html">SHA-256 & MD5 Generator</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="palette"></i> Design & Text</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/color-picker.html">Color Picker</a></li>
+                  <li><a href="../tools/css-gradient-generator.html">Gradient Generator</a></li>
+                  <li><a href="../tools/image-compressor.html">Image Compressor</a></li>
+                  <li><a href="../tools/word-counter.html">Word & Character Counter</a></li>
+                  <li><a href="../tools/stopwatch-timer.html">Stopwatch & Timer</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="../index.html#tools-section" class="dropdown-all-btn">
+                <span>View All Premium Tools (25 total)</span> <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../about.html" class="nav-link ">About</a></li>
+        <li><a href="../contact.html" class="nav-link ">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="light-icon" id="sun-icon"></i>
+          <i data-lucide="sun" class="dark-icon" id="moon-icon"></i>
+        </button>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <i data-lucide="menu" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="fade-in">
+    
+    <div class="container" style="margin-top: 20px;">
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <div class="breadcrumbs-separator"><i data-lucide="chevron-right"></i></div>
+        <span style="color:var(--text-primary);">QR Code Scanner</span>
+      </div>
+
+      <div class="tool-layout">
+        <!-- Main Tool Column -->
+        <div class="tool-panel">
+          <h1 style="font-size:32px; margin-bottom:12px;">QR Code Scanner</h1>
+          <p class="mb-32" style="color:var(--text-muted); font-size:15px;">Instantly decode QR codes in real-time using your webcam/device camera or by uploading any image file. Operates 100% client-side for maximum privacy.</p>
+          
+          <div style="margin-top:20px;">
+            
+      <style>
+        .qr-scanner-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          width: 100%;
+        }
+        .scanner-tabs {
+          display: flex;
+          gap: 8px;
+          border-bottom: 1px solid var(--border-color);
+          padding-bottom: 8px;
+        }
+        .scanner-tab-btn {
+          padding: 8px 16px;
+          font-weight: 600;
+          font-size: 14px;
+          color: var(--text-secondary);
+          border: none;
+          background: transparent;
+          border-radius: var(--radius-md);
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .scanner-tab-btn:hover {
+          background: var(--bg-surface-secondary);
+          color: var(--text-primary);
+        }
+        .scanner-tab-btn.active {
+          background: var(--bg-surface-secondary);
+          color: var(--color-primary);
+          box-shadow: inset 0 -2px 0 0 var(--color-primary);
+        }
+        .scanner-container {
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 24px;
+          box-shadow: var(--shadow-sm);
+        }
+        .camera-view-wrapper {
+          position: relative;
+          width: 100%;
+          max-width: 480px;
+          margin: 0 auto;
+          aspect-ratio: 4/3;
+          border-radius: var(--radius-md);
+          overflow: hidden;
+          background: #000;
+          border: 2px solid var(--border-color);
+        }
+        #reader {
+          width: 100% !important;
+          height: 100% !important;
+          border: none !important;
+        }
+        #reader video {
+          object-fit: cover !important;
+          width: 100% !important;
+          height: 100% !important;
+        }
+        /* Scanning overlay effect */
+        .scan-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          pointer-events: none;
+          display: none;
+          align-items: center;
+          justify-content: center;
+        }
+        .scan-overlay.active {
+          display: flex;
+        }
+        .scan-frame {
+          width: 200px;
+          height: 200px;
+          border: 2px dashed var(--color-primary);
+          box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.4);
+          position: relative;
+          border-radius: var(--radius-sm);
+          z-index: 10;
+        }
+        .scan-laser {
+          position: absolute;
+          width: 200px;
+          height: 2px;
+          background: var(--color-primary);
+          box-shadow: 0 0 8px var(--color-primary);
+          animation: laser-scan 2s linear infinite;
+          z-index: 15;
+        }
+        @keyframes laser-scan {
+          0% { transform: translateY(-100px); }
+          50% { transform: translateY(100px); }
+          100% { transform: translateY(-100px); }
+        }
+        .upload-dropzone {
+          border: 2px dashed var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 40px 20px;
+          text-align: center;
+          background: var(--bg-surface-secondary);
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+        }
+        .upload-dropzone:hover, .upload-dropzone.dragover {
+          border-color: var(--color-primary);
+          background: rgba(59, 130, 246, 0.04);
+        }
+        .dropzone-title {
+          font-weight: 600;
+          font-size: 16px;
+          color: var(--text-primary);
+        }
+        .result-card {
+          margin-top: 24px;
+          background: var(--bg-surface-secondary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-md);
+          padding: 20px;
+        }
+        .result-text-area {
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+          padding: 14px;
+          font-family: var(--font-mono);
+          font-size: 14px;
+          word-break: break-all;
+          white-space: pre-wrap;
+          margin: 16px 0;
+          color: var(--text-primary);
+          max-height: 240px;
+          overflow-y: auto;
+        }
+        .action-buttons {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+        .history-container {
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 24px;
+          box-shadow: var(--shadow-sm);
+        }
+        .history-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+        }
+        .history-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .empty-history-text {
+          text-align: center;
+          color: var(--text-muted);
+          font-size: 14px;
+          padding: 24px 0;
+          font-style: italic;
+        }
+        .history-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 16px;
+          background: var(--bg-surface-secondary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-md);
+          gap: 16px;
+        }
+        .history-meta {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          flex: 1;
+          min-width: 0;
+        }
+        .history-text {
+          font-weight: 500;
+          font-size: 14px;
+          color: var(--text-primary);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: break-all;
+        }
+        .history-time {
+          font-size: 11px;
+          color: var(--text-muted);
+        }
+        .history-actions {
+          display: flex;
+          gap: 6px;
+        }
+      </style>
+
+      <div class="qr-scanner-wrapper">
+        <div class="scanner-tabs">
+          <button id="tab-btn-camera" class="scanner-tab-btn active">
+            <i data-lucide="camera" style="width: 14px; height: 14px; display: inline-block; vertical-align: text-bottom; margin-right: 6px;"></i>Camera Scan
+          </button>
+          <button id="tab-btn-upload" class="scanner-tab-btn">
+            <i data-lucide="upload" style="width: 14px; height: 14px; display: inline-block; vertical-align: text-bottom; margin-right: 6px;"></i>Upload Image
+          </button>
+        </div>
+
+        <div class="scanner-container">
+          <!-- Camera Scan Panel -->
+          <div id="camera-panel" class="fade-in">
+            <div class="form-group" style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 200px;">
+                <label class="form-label" for="camera-select">Select Camera Device</label>
+                <select id="camera-select" class="form-control" style="padding: 10px;"></select>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: auto; padding-bottom: 2px;">
+                <button id="btn-toggle-camera" class="btn btn-primary" style="white-space: nowrap;">
+                  <i data-lucide="play" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Start Camera
+                </button>
+                <button id="btn-switch-camera" class="btn btn-secondary" style="padding: 10px 14px;" title="Switch camera facing mode">
+                  <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="camera-instructions" style="text-align: center; padding: 24px 12px; background: var(--bg-surface-secondary); border: 1px dashed var(--border-color); border-radius: var(--radius-md); margin-bottom: 20px;">
+              <i data-lucide="camera-off" style="width: 32px; height: 32px; color: var(--text-muted); margin-bottom: 8px;"></i>
+              <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">Camera is currently stopped. Click 'Start Camera' to begin scanning in real-time.</p>
+            </div>
+
+            <div id="camera-preview-box" class="camera-view-wrapper" style="display: none;">
+              <div id="reader"></div>
+              <div id="scan-laser-line" class="scan-overlay">
+                <div class="scan-laser"></div>
+                <div class="scan-frame"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Image Panel -->
+          <div id="upload-panel" style="display: none;" class="fade-in">
+            <div id="file-dropzone" class="upload-dropzone">
+              <i data-lucide="image" style="width: 48px; height: 48px; color: var(--color-primary); margin-bottom: 8px;"></i>
+              <span class="dropzone-title">Drag & drop your QR code image here</span>
+              <p>Supports PNG, JPG, JPEG, WebP, GIF</p>
+              <span style="font-size: 13px; color: var(--text-muted);">or</span>
+              <button class="btn btn-secondary btn-sm" id="btn-browse-file">Browse File</button>
+              <input type="file" id="file-input" accept="image/*" style="display: none;">
+            </div>
+
+            <div id="upload-preview-container" style="display: none; text-align: center; margin-top: 20px; padding: 16px; background: var(--bg-surface-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <p class="form-label" style="text-align: left;">Uploaded QR Image Preview</p>
+              <img id="upload-preview" style="max-height: 200px; max-width: 100%; object-fit: contain; border-radius: var(--radius-sm); margin: 12px 0;">
+              <div style="display: flex; gap: 8px; justify-content: center;">
+                <button id="btn-clear-upload" class="btn btn-secondary btn-sm">
+                  <i data-lucide="trash" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>Remove Image
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scanned Decoded Results -->
+          <div id="result-panel" style="display: none;" class="result-card fade-in">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="badge badge-success" style="font-size: 11px; padding: 4px 8px; text-transform: uppercase;">Decoded Successfully</span>
+              <span id="result-type-badge" class="badge" style="background: rgba(59, 130, 246, 0.12); color: #3b82f6; font-size: 11px; padding: 4px 8px; text-transform: uppercase;">TEXT</span>
+            </div>
+            
+            <div id="result-text" class="result-text-area"></div>
+
+            <div class="action-buttons">
+              <button id="btn-copy-result" class="btn btn-primary" style="flex: 1; min-width: 140px;">
+                <i data-lucide="copy" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Copy Text
+              </button>
+              <a id="btn-open-link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; min-width: 140px; display: none;">
+                <i data-lucide="external-link" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Open Link
+              </a>
+              <a id="btn-search-web" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; min-width: 140px;">
+                <i data-lucide="search" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Search Google
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="history-container">
+          <div class="history-header">
+            <h3 style="margin: 0; font-size: 18px; font-weight: 700;">Scan History</h3>
+            <button id="btn-clear-history" class="btn btn-secondary btn-sm" style="display: none;">
+              <i data-lucide="trash-2" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>Clear History
+            </button>
+          </div>
+
+          <div id="history-list" class="history-list">
+            <div class="empty-history-text">No scans recorded yet. Scanned QR codes will appear here automatically.</div>
+          </div>
+        </div>
+      </div>
+    
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="card" style="height:fit-content; padding:24px;">
+          <h3 class="mb-16">Quick Instructions</h3>
+          <ul class="footer-links" style="padding-left:16px; list-style:disc; color:var(--text-secondary); margin-bottom:24px; font-size:14px; line-height:1.6;">
+            <li>Fill in all parameter sliders or text input boxes.</li>
+            <li>Calculations run entirely safe and local inside your browser.</li>
+            <li>Use the standard Copy buttons to copy outputs instantly.</li>
+          </ul>
+
+          <h3 class="mb-16">Security & Privacy</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.5;">
+            Our suite executes 100% locally. None of your data, text inputs, password profiles, or uploaded images are ever sent to external cloud servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- SEO Informational Block -->
+      <div class="tool-info-section">
+        <div class="tool-info-block">
+          <h3>Why use the online QR Code Scanner?</h3>
+          <p>This premium QR Code Scanner represents a client-side tool optimized for immediate results. Designed with lightweight modern CSS frames and standard calculations, it loads within milliseconds and operates offline without lag.</p>
+        </div>
+        <div class="tool-info-block">
+          <h3>Key Features & Advantages</h3>
+          <p>Enjoy absolute client-side protection: since no files or texts are transferred to databases, it remains the safest portal. Works fluently across mobile touch devices, iPads, laptops, and desktop browsers alike.</p>
+        </div>
+      </div>
+    </div>
+  
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div>
+        <a href="../index.html" class="logo mb-16">
+          <i data-lucide="layers"></i> Multi<span>Tools</span>
+        </a>
+        <p class="footer-brand-desc">
+          Your premium all-in-one suite of 25 secure, responsive, client-side tools running entirely inside your browser. No server storage, no limits.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../tools/scientific-calculator.html" class="footer-link">Scientific Calculator</a></li>
+          <li><a href="../tools/qr-code-generator.html" class="footer-link">QR Code Generator</a></li>
+          <li><a href="../tools/image-compressor.html" class="footer-link">Image Compressor</a></li>
+          <li><a href="../tools/password-generator.html" class="footer-link">Password Generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../contact.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MultiTools. All rights reserved. 100% browser-safe client-side software.</p>
+      <div style="display: flex; gap: 16px;">
+        <a href="../privacy-policy.html" class="footer-link">Privacy</a>
+        <a href="../disclaimer.html" class="footer-link">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+      // Elements
+      const tabCamera = document.getElementById('tab-btn-camera');
+      const tabUpload = document.getElementById('tab-btn-upload');
+      const panelCamera = document.getElementById('camera-panel');
+      const panelUpload = document.getElementById('upload-panel');
+      
+      const selectCamera = document.getElementById('camera-select');
+      const btnToggleCamera = document.getElementById('btn-toggle-camera');
+      const btnSwitchCamera = document.getElementById('btn-switch-camera');
+      const cameraInstructions = document.getElementById('camera-instructions');
+      const cameraPreviewBox = document.getElementById('camera-preview-box');
+      const scanLaserLine = document.getElementById('scan-laser-line');
+      
+      const fileDropzone = document.getElementById('file-dropzone');
+      const btnBrowseFile = document.getElementById('btn-browse-file');
+      const fileInput = document.getElementById('file-input');
+      const uploadPreviewContainer = document.getElementById('upload-preview-container');
+      const uploadPreview = document.getElementById('upload-preview');
+      const btnClearUpload = document.getElementById('btn-clear-upload');
+      
+      const panelResult = document.getElementById('result-panel');
+      const badgeResultType = document.getElementById('result-type-badge');
+      const textResult = document.getElementById('result-text');
+      const btnCopyResult = document.getElementById('btn-copy-result');
+      const btnOpenLink = document.getElementById('btn-open-link');
+      const btnSearchWeb = document.getElementById('btn-search-web');
+      
+      const historyList = document.getElementById('history-list');
+      const btnClearHistory = document.getElementById('btn-clear-history');
+
+      let html5QrCode = null;
+      let isScanning = false;
+      let currentFacingMode = 'environment'; // 'user' or 'environment'
+      let camerasList = [];
+
+      // Tab Switching
+      tabCamera.addEventListener('click', () => {
+        tabCamera.classList.add('active');
+        tabUpload.classList.remove('active');
+        panelCamera.style.display = 'block';
+        panelUpload.style.display = 'none';
+      });
+
+      tabUpload.addEventListener('click', () => {
+        tabUpload.classList.add('active');
+        tabCamera.classList.remove('active');
+        panelUpload.style.display = 'block';
+        panelCamera.style.display = 'none';
+        stopCameraScan();
+      });
+
+      // Browser Notification Beep using Web Audio API
+      function playScanBeep() {
+        try {
+          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const oscillator = audioCtx.createOscillator();
+          const gainNode = audioCtx.createGain();
+          
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(1000, audioCtx.currentTime); // 1000 Hz tone
+          gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime); // subtle volume
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+          
+          oscillator.start();
+          oscillator.stop(audioCtx.currentTime + 0.15); // beep duration 150ms
+        } catch (e) {
+          console.warn('Audio Context failed:', e);
+        }
+      }
+
+      // Initialize HTML5 QR Code Scanner
+      function initHtml5QrCode() {
+        if (!html5QrCode) {
+          html5QrCode = new Html5Qrcode("reader");
+        }
+      }
+
+      // Populate camera dropdown list
+      function loadCameras() {
+        if (typeof Html5Qrcode === 'undefined') {
+          setTimeout(loadCameras, 150);
+          return;
+        }
+        
+        Html5Qrcode.getCameras().then(devices => {
+          camerasList = devices;
+          selectCamera.innerHTML = '';
+          
+          if (devices && devices.length > 0) {
+            devices.forEach((device, index) => {
+              const option = document.createElement('option');
+              option.value = device.id;
+              option.textContent = device.label || 'Camera ' + (index + 1);
+              selectCamera.appendChild(option);
+            });
+            selectCamera.disabled = false;
+            btnToggleCamera.disabled = false;
+          } else {
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = 'No camera found';
+            selectCamera.appendChild(option);
+            selectCamera.disabled = true;
+            btnToggleCamera.disabled = true;
+          }
+        }).catch(err => {
+          console.error("Error getting cameras", err);
+          selectCamera.innerHTML = '<option value="">Permission denied / No device</option>';
+          selectCamera.disabled = true;
+        });
+      }
+
+      // Start/Stop Real-time Camera scan
+      btnToggleCamera.addEventListener('click', () => {
+        if (isScanning) {
+          stopCameraScan();
+        } else {
+          startCameraScan();
+        }
+      });
+
+      function startCameraScan() {
+        if (typeof Html5Qrcode === 'undefined') {
+          window.showToast('Scanner library still loading. Please wait.');
+          return;
+        }
+        initHtml5QrCode();
+        
+        const cameraId = selectCamera.value;
+        const config = {
+          fps: 12,
+          qrbox: (width, height) => {
+            const minDim = Math.min(width, height);
+            const boxDim = Math.floor(minDim * 0.65);
+            return { width: boxDim, height: boxDim };
+          }
+        };
+
+        // If no cameras populated yet, use facing mode
+        const targetSource = cameraId ? { deviceId: { exact: cameraId } } : { facingMode: currentFacingMode };
+
+        cameraInstructions.style.display = 'none';
+        cameraPreviewBox.style.display = 'block';
+        scanLaserLine.classList.add('active');
+        
+        btnToggleCamera.innerHTML = '<i data-lucide="square" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Stop Camera';
+        lucide.createIcons();
+        isScanning = true;
+
+        html5QrCode.start(
+          targetSource,
+          config,
+          (decodedText, decodedResult) => {
+            handleScanSuccess(decodedText);
+            stopCameraScan();
+          },
+          (errorMessage) => {
+            // Keep scanning, silent matching errors
+          }
+        ).catch(err => {
+          console.error("Camera start failure:", err);
+          window.showToast("Could not access camera. Check permissions.");
+          stopCameraScan();
+        });
+      }
+
+      function stopCameraScan() {
+        if (html5QrCode && isScanning) {
+          html5QrCode.stop().then(() => {
+            isScanning = false;
+            btnToggleCamera.innerHTML = '<i data-lucide="play" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Start Camera';
+            cameraInstructions.style.display = 'block';
+            cameraPreviewBox.style.display = 'none';
+            scanLaserLine.classList.remove('active');
+            lucide.createIcons();
+          }).catch(err => {
+            console.error("Stop error:", err);
+          });
+        } else {
+          isScanning = false;
+          btnToggleCamera.innerHTML = '<i data-lucide="play" style="width: 16px; height: 16px; margin-right: 8px; display: inline-block; vertical-align: text-bottom;"></i>Start Camera';
+          cameraInstructions.style.display = 'block';
+          cameraPreviewBox.style.display = 'none';
+          scanLaserLine.classList.remove('active');
+          lucide.createIcons();
+        }
+      }
+
+      // Switch camera source (facing direction)
+      btnSwitchCamera.addEventListener('click', () => {
+        currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+        window.showToast("Facing mode changed to: " + (currentFacingMode === 'user' ? 'Front' : 'Back'));
+        if (isScanning) {
+          html5QrCode.stop().then(() => {
+            isScanning = false;
+            startCameraScan();
+          }).catch(e => {
+            isScanning = false;
+            startCameraScan();
+          });
+        }
+      });
+
+      // Handle Decoded Code Data
+      function handleScanSuccess(text) {
+        playScanBeep();
+        
+        // Show result card
+        textResult.textContent = text;
+        panelResult.style.display = 'block';
+        
+        // Check if text is URL
+        const isUrl = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/\S*)?$/.test(text.trim());
+        
+        if (isUrl) {
+          let fullUrl = text.trim();
+          if (!/^https?:\/\//i.test(fullUrl)) {
+            fullUrl = 'http://' + fullUrl;
+          }
+          btnOpenLink.href = fullUrl;
+          btnOpenLink.style.display = 'inline-flex';
+          badgeResultType.textContent = 'URL / LINK';
+          badgeResultType.className = 'badge badge-primary';
+        } else {
+          btnOpenLink.style.display = 'none';
+          badgeResultType.textContent = 'TEXT';
+          badgeResultType.className = 'badge';
+          badgeResultType.style.background = 'rgba(156, 163, 175, 0.12)';
+          badgeResultType.style.color = 'var(--text-secondary)';
+        }
+
+        // Configure search web link
+        btnSearchWeb.href = 'https://www.google.com/search?q=' + encodeURIComponent(text.trim());
+
+        // Add to history list
+        addToHistory(text);
+        
+        window.showToast('QR Code decoded successfully!');
+        
+        // Scroll to result panel
+        panelResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Copy decoded text output
+      btnCopyResult.addEventListener('click', () => {
+        const text = textResult.textContent;
+        if (text) {
+          navigator.clipboard.writeText(text).then(() => {
+            window.showToast('Copied decoded value to clipboard!');
+          });
+        }
+      });
+
+      // File Drag & Drop + Browse scanning
+      btnBrowseFile.addEventListener('click', () => fileInput.click());
+      
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          processUploadFile(file);
+        }
+      });
+
+      // Drag Over Class
+      fileDropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileDropzone.classList.add('dragover');
+      });
+
+      fileDropzone.addEventListener('dragleave', () => {
+        fileDropzone.classList.remove('dragover');
+      });
+
+      fileDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileDropzone.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+          processUploadFile(file);
+        } else {
+          window.showToast('Please upload a valid image file!');
+        }
+      });
+
+      function processUploadFile(file) {
+        // Show local preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          uploadPreview.src = e.target.result;
+          uploadPreviewContainer.style.display = 'block';
+          
+          // Execute decoding
+          decodeImageFile(file);
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function decodeImageFile(file) {
+        initHtml5QrCode();
+        window.showToast('Scanning uploaded image file...');
+        
+        html5QrCode.scanFile(file, true)
+          .then(decodedText => {
+            handleScanSuccess(decodedText);
+          })
+          .catch(err => {
+            console.error(err);
+            window.showToast('No readable QR code found in this image.');
+          });
+      }
+
+      btnClearUpload.addEventListener('click', () => {
+        fileInput.value = '';
+        uploadPreview.src = '';
+        uploadPreviewContainer.style.display = 'none';
+        panelResult.style.display = 'none';
+      });
+
+      // History Management with LocalStorage
+      function getHistory() {
+        const raw = localStorage.getItem('qr_scan_history');
+        return raw ? JSON.parse(raw) : [];
+      }
+
+      function saveHistory(history) {
+        localStorage.setItem('qr_scan_history', JSON.stringify(history));
+      }
+
+      function addToHistory(text) {
+        const history = getHistory();
+        
+        // Remove duplicate text if exists to bring it to top
+        const filtered = history.filter(item => item.text !== text);
+        
+        const newItem = {
+          text: text,
+          timestamp: new Date().toLocaleString(),
+          id: Date.now()
+        };
+        
+        filtered.unshift(newItem);
+        
+        // Cap history to 50 entries
+        if (filtered.length > 50) {
+          filtered.pop();
+        }
+        
+        saveHistory(filtered);
+        renderHistory();
+      }
+
+      function deleteHistoryItem(id) {
+        const history = getHistory();
+        const updated = history.filter(item => item.id !== id);
+        saveHistory(updated);
+        renderHistory();
+        window.showToast('History item removed.');
+      }
+
+      function renderHistory() {
+        const history = getHistory();
+        
+        if (history.length === 0) {
+          historyList.innerHTML = '<div class="empty-history-text">No scans recorded yet. Scanned QR codes will appear here automatically.</div>';
+          btnClearHistory.style.display = 'none';
+          return;
+        }
+
+        btnClearHistory.style.display = 'inline-flex';
+        historyList.innerHTML = '';
+        
+        history.forEach(item => {
+          const isUrl = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/\S*)?$/.test(item.text.trim());
+          let clickLink = item.text.trim();
+          if (isUrl && !/^https?:\/\//i.test(clickLink)) {
+            clickLink = 'http://' + clickLink;
+          }
+
+          const itemEl = document.createElement('div');
+          itemEl.className = 'history-item fade-in';
+          
+          let actionBtnsHtml = '';
+          if (isUrl) {
+            actionBtnsHtml += `
+              <a href="\${clickLink}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px;" title="Open link">
+                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+              </a>
+            `;
+          }
+          
+          itemEl.innerHTML = `
+            <div class="history-meta">
+              <span class="history-text" title="\${item.text}">\${item.text}</span>
+              <span class="history-time">\${item.timestamp}</span>
+            </div>
+            <div class="history-actions">
+              \${actionBtnsHtml}
+              <button class="btn btn-secondary btn-sm btn-copy-history" style="padding: 6px 10px;" title="Copy to clipboard">
+                <i data-lucide="copy" style="width: 14px; height: 14px;"></i>
+              </button>
+              <button class="btn btn-secondary btn-sm btn-delete-history" style="padding: 6px 10px; color: var(--color-danger);" title="Delete entry">
+                <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          `;
+
+          // Event Listeners
+          itemEl.querySelector('.btn-copy-history').addEventListener('click', () => {
+            navigator.clipboard.writeText(item.text).then(() => {
+              window.showToast('Copied: ' + (item.text.length > 20 ? item.text.substring(0, 20) + '...' : item.text));
+            });
+          });
+
+          itemEl.querySelector('.btn-delete-history').addEventListener('click', () => {
+            deleteHistoryItem(item.id);
+          });
+
+          historyList.appendChild(itemEl);
+        });
+
+        lucide.createIcons();
+      }
+
+      btnClearHistory.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear your entire QR scan history?')) {
+          saveHistory([]);
+          renderHistory();
+          window.showToast('Scan history cleared successfully!');
+        }
+      });
+
+      // Quick Setup
+      loadCameras();
+      renderHistory();
+    
+      });
+    </script>
+  
+</body>
+</html>

@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decision Wheel & Random Picker - MultiTools Premium Web Utilities</title>
+  <meta name="description" content="Unsure about a choice? Enter your options on the wheel, choose premium palettes, and spin with realistic physics and satisfying sound effects!">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.354.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Clarity Tracking Script -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xl7p4suhj3");
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="logo" id="site-logo">
+        <i data-lucide="layers" id="logo-icon"></i> Multi<span>Tools</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link ">Home</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="tools-dropdown-toggle">
+            Tools <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+          </a>
+          <div class="dropdown-menu-container">
+            <div class="dropdown-menu-grid">
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="calculator"></i> Calculators</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/scientific-calculator.html">Scientific Calculator</a></li>
+                  <li><a href="../tools/loan-emi-calculator.html">Loan EMI Calculator</a></li>
+                  <li><a href="../tools/age-calculator.html">Age Calculator</a></li>
+                  <li><a href="../tools/bmi-calculator.html">BMI Calculator</a></li>
+                  <li><a href="../tools/unit-converter.html">Unit Converter</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="code"></i> Dev Utilities</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/qr-code-generator.html">QR Code Generator</a></li>
+                  <li><a href="../tools/password-generator.html">Password Generator</a></li>
+                  <li><a href="../tools/base64-encoder-decoder.html">Base64 Encoder/Decoder</a></li>
+                  <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                  <li><a href="../tools/hash-generator.html">SHA-256 & MD5 Generator</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="palette"></i> Design & Text</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/color-picker.html">Color Picker</a></li>
+                  <li><a href="../tools/css-gradient-generator.html">Gradient Generator</a></li>
+                  <li><a href="../tools/image-compressor.html">Image Compressor</a></li>
+                  <li><a href="../tools/word-counter.html">Word & Character Counter</a></li>
+                  <li><a href="../tools/stopwatch-timer.html">Stopwatch & Timer</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="../index.html#tools-section" class="dropdown-all-btn">
+                <span>View All Premium Tools (25 total)</span> <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../about.html" class="nav-link ">About</a></li>
+        <li><a href="../contact.html" class="nav-link ">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="light-icon" id="sun-icon"></i>
+          <i data-lucide="sun" class="dark-icon" id="moon-icon"></i>
+        </button>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <i data-lucide="menu" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="fade-in">
+    
+    <div class="container" style="margin-top: 20px;">
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <div class="breadcrumbs-separator"><i data-lucide="chevron-right"></i></div>
+        <span style="color:var(--text-primary);">Decision Wheel & Random Picker</span>
+      </div>
+
+      <div class="tool-layout">
+        <!-- Main Tool Column -->
+        <div class="tool-panel">
+          <h1 style="font-size:32px; margin-bottom:12px;">Decision Wheel & Random Picker</h1>
+          <p class="mb-32" style="color:var(--text-muted); font-size:15px;">Unsure about a choice? Enter your options on the wheel, choose premium palettes, and spin with realistic physics and satisfying sound effects!</p>
+          
+          <div style="margin-top:20px;">
+            
+      <style>
+        .wheel-tool-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          width: 100%;
+        }
+        .wheel-grid {
+          display: grid;
+          grid-template-columns: 1.12fr 1fr;
+          gap: 32px;
+          align-items: start;
+        }
+        @media (max-width: 991px) {
+          .wheel-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+        }
+        .wheel-column {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 32px 24px;
+          box-shadow: var(--shadow-sm);
+          position: relative;
+        }
+        .wheel-stage-container {
+          position: relative;
+          width: 100%;
+          max-width: 400px;
+          aspect-ratio: 1/1;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .canvas-wrapper {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          position: relative;
+        }
+        #wheel-canvas {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.12), 0 0 0 8px var(--bg-surface-secondary);
+        }
+        .wheel-pointer {
+          position: absolute;
+          top: -12px;
+          left: 50%;
+          transform: translateX(-50%) rotate(0deg);
+          width: 26px;
+          height: 36px;
+          background: #f59e0b;
+          clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+          z-index: 25;
+          transform-origin: 50% 15%;
+          filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+          transition: transform 0.04s ease-out;
+        }
+        .wheel-pointer.ticking {
+          transform: translateX(-50%) rotate(-18deg);
+        }
+        .center-spin-btn {
+          position: absolute;
+          width: 76px;
+          height: 76px;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #1e293b;
+          border: 5px solid #1e293b;
+          font-weight: 800;
+          font-size: 13px;
+          letter-spacing: 0.5px;
+          cursor: pointer;
+          z-index: 20;
+          box-shadow: 0 6px 16px rgba(0,0,0,0.22), inset 0 2px 4px rgba(255,255,255,0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          user-select: none;
+        }
+        .center-spin-btn:hover {
+          transform: scale(1.08);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.26), inset 0 2px 4px rgba(255,255,255,0.4);
+        }
+        .center-spin-btn:active {
+          transform: scale(0.95);
+          box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+        }
+        .center-spin-btn:disabled {
+          background: #cbd5e1 !important;
+          color: #94a3b8 !important;
+          border-color: #cbd5e1 !important;
+          cursor: not-allowed;
+          transform: none !important;
+          box-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .center-spin-btn {
+          background: #1e293b;
+          color: #ffffff;
+          border-color: #334155;
+        }
+        html[data-theme="dark"] .center-spin-btn:disabled {
+          background: #334155 !important;
+          color: #475569 !important;
+          border-color: #475569 !important;
+        }
+
+        .wheel-action-row {
+          display: flex;
+          gap: 12px;
+          width: 100%;
+          max-width: 400px;
+          margin-top: 24px;
+        }
+        .wheel-action-row button {
+          flex: 1;
+        }
+
+        .options-column {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .control-card {
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 16px;
+          box-shadow: var(--shadow-sm);
+        }
+        .options-list-container {
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 16px;
+          box-shadow: var(--shadow-sm);
+          display: flex;
+          flex-direction: column;
+          max-height: 380px;
+        }
+        .options-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          overflow-y: auto;
+          flex: 1;
+          padding-right: 4px;
+          margin-top: 12px;
+        }
+        .option-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 8px 12px;
+          background: var(--bg-surface-secondary);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-md);
+          transition: all 0.2s;
+        }
+        .option-item:hover {
+          border-color: var(--color-primary);
+        }
+        .option-color-block {
+          width: 20px;
+          height: 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          border: 1.5px solid rgba(0,0,0,0.12);
+          box-shadow: var(--shadow-sm);
+          position: relative;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
+        .opt-color-input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+        }
+        .option-name-span {
+          flex: 1;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-primary);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .option-name-input {
+          flex: 1;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-primary);
+          background: var(--bg-surface-primary);
+          border: 1px solid var(--color-primary);
+          border-radius: var(--radius-sm);
+          padding: 2px 6px;
+          outline: none;
+        }
+        .option-action-btn {
+          background: transparent;
+          border: none;
+          color: var(--text-muted);
+          cursor: pointer;
+          padding: 4px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.15s;
+        }
+        .option-action-btn:hover {
+          background: var(--border-color);
+          color: var(--text-primary);
+        }
+        .option-action-btn.btn-delete:hover {
+          color: var(--color-danger);
+          background: rgba(239, 68, 68, 0.08);
+        }
+
+        /* Winner Modal Overlay */
+        .winner-modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.45);
+          backdrop-filter: blur(4px);
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.25s ease;
+        }
+        .winner-modal-overlay.active {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .winner-modal-content {
+          width: 90%;
+          max-width: 380px;
+          padding: 28px 24px;
+          text-align: center;
+          background: var(--bg-surface-primary);
+          border-radius: var(--radius-xl);
+          border: 1px solid var(--border-color);
+          box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
+          transform: scale(0.9);
+          transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .winner-modal-overlay.active .winner-modal-content {
+          transform: scale(1);
+        }
+        .winner-modal-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 6px;
+          margin-bottom: 16px;
+        }
+        .winner-header-icon {
+          width: 44px;
+          height: 44px;
+          color: #f59e0b;
+        }
+        .winner-modal-header h3 {
+          font-size: 18px;
+          font-weight: 700;
+          margin: 0;
+          color: var(--text-primary);
+        }
+        .winner-name {
+          font-size: 26px;
+          font-weight: 800;
+          color: var(--color-primary);
+          margin: 12px 0 20px 0;
+          word-break: break-all;
+        }
+        .winner-modal-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .winner-modal-actions button {
+          width: 100%;
+        }
+      </style>
+
+      <div class="wheel-tool-wrapper">
+        <div class="wheel-grid">
+          <!-- Left Column: The Wheel Container -->
+          <div class="wheel-column">
+            <div class="wheel-stage-container" id="wheel-stage-container">
+              <!-- Physical Pin Tick Arrow Pointer -->
+              <div class="wheel-pointer" id="wheel-pointer"></div>
+              <!-- High-res Scaled Canvas wrapper -->
+              <div class="canvas-wrapper">
+                <canvas id="wheel-canvas"></canvas>
+              </div>
+              <!-- Center Pin Spin Button -->
+              <button class="center-spin-btn" id="btn-spin-center">SPIN</button>
+            </div>
+            
+            <div class="wheel-action-row">
+              <button class="btn btn-primary" id="btn-spin-main">
+                <i data-lucide="play" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>Spin Wheel
+              </button>
+              <button class="btn btn-secondary" id="btn-reset-options">
+                <i data-lucide="rotate-ccw" style="width: 14px; height: 14px; margin-right: 6px; display: inline-block; vertical-align: text-bottom;"></i>Reset Default
+              </button>
+            </div>
+          </div>
+          
+          <!-- Right Column: Options Control Panels -->
+          <div class="options-column">
+            <!-- Preset & Settings Card -->
+            <div class="control-card">
+              <div class="form-group mb-12">
+                <label class="form-label" for="preset-select">Select Dynamic Preset</label>
+                <select id="preset-select" class="form-control">
+                  <option value="yes_no">Yes / No / Maybe</option>
+                  <option value="dinner">Dinner Choice (Pizza, Sushi, Burger...)</option>
+                  <option value="truth_dare">Truth or Dare Picker</option>
+                  <option value="numbers">Dice Roll Simulator (1 - 6)</option>
+                  <option value="activities">Weekend Activity Picker</option>
+                  <option value="custom">Custom Wheel Options</option>
+                </select>
+              </div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px;">
+                <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; cursor: pointer; user-select: none;">
+                  <input type="checkbox" id="chk-sound" checked style="width: 15px; height: 15px;">
+                  Sound Effects
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; cursor: pointer; user-select: none;">
+                  <input type="checkbox" id="chk-remove-winner" style="width: 15px; height: 15px;">
+                  Auto-Remove Winner
+                </label>
+              </div>
+            </div>
+
+            <!-- Add Segment Card -->
+            <div class="control-card">
+              <label class="form-label" for="new-option-input">Add Custom Segment</label>
+              <form id="add-option-form" style="display: flex; gap: 8px;">
+                <input type="text" id="new-option-input" class="form-control" placeholder="Type name..." maxlength="40" required style="flex: 1;">
+                <input type="color" id="new-option-color" class="color-picker-input" value="#3b82f6" title="Pick color" style="width: 38px; height: 38px; padding: 0; border: 1.5px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer; background: transparent; flex-shrink: 0;">
+                <button type="submit" class="btn btn-primary" style="padding: 0 14px; flex-shrink: 0;" title="Add option">
+                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Color Theme Card -->
+            <div class="control-card">
+              <div class="form-group" style="margin: 0;">
+                <label class="form-label" for="palette-select">Color Theme Palette</label>
+                <select id="palette-select" class="form-control">
+                  <option value="rainbow">Vibrant Rainbow</option>
+                  <option value="pastel">Soft Pastels</option>
+                  <option value="neon">Midnight Neon</option>
+                  <option value="ocean">Cool Ocean Waves</option>
+                  <option value="sunset">Warm Sunset Glow</option>
+                  <option value="monochrome">Minimalist Slate</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Segment List Card -->
+            <div class="options-list-container">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="margin: 0; font-size: 14px; font-weight: 700;">Segments (<span id="option-count">0</span>)</h4>
+                <button class="btn btn-secondary btn-sm" id="btn-clear-all" style="padding: 2px 6px; font-size: 11px; color: var(--color-danger); border-radius: var(--radius-sm);">
+                  <i data-lucide="trash-2" style="width: 11px; height: 11px; margin-right: 3px; display: inline-block; vertical-align: text-bottom;"></i>Clear All
+                </button>
+              </div>
+              <div id="options-list" class="options-list">
+                <!-- Dynamically filled list -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pop-up Overlay Winner Reveal -->
+        <div class="winner-modal-overlay" id="winner-modal">
+          <div class="winner-modal-content card">
+            <div class="winner-modal-header">
+              <i data-lucide="party-popper" class="winner-header-icon"></i>
+              <h3>Result Decided!</h3>
+            </div>
+            <div class="winner-name" id="winner-display-name">Winner!</div>
+            <div class="winner-modal-actions">
+              <button class="btn btn-primary" id="winner-btn-close">Fantastic!</button>
+              <button class="btn btn-secondary" id="winner-btn-remove" style="color: var(--color-danger); font-weight: 600;">Remove and Spin Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="card" style="height:fit-content; padding:24px;">
+          <h3 class="mb-16">Quick Instructions</h3>
+          <ul class="footer-links" style="padding-left:16px; list-style:disc; color:var(--text-secondary); margin-bottom:24px; font-size:14px; line-height:1.6;">
+            <li>Fill in all parameter sliders or text input boxes.</li>
+            <li>Calculations run entirely safe and local inside your browser.</li>
+            <li>Use the standard Copy buttons to copy outputs instantly.</li>
+          </ul>
+
+          <h3 class="mb-16">Security & Privacy</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.5;">
+            Our suite executes 100% locally. None of your data, text inputs, password profiles, or uploaded images are ever sent to external cloud servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- SEO Informational Block -->
+      <div class="tool-info-section">
+        <div class="tool-info-block">
+          <h3>Why use the online Decision Wheel & Random Picker?</h3>
+          <p>This premium Decision Wheel & Random Picker represents a client-side tool optimized for immediate results. Designed with lightweight modern CSS frames and standard calculations, it loads within milliseconds and operates offline without lag.</p>
+        </div>
+        <div class="tool-info-block">
+          <h3>Key Features & Advantages</h3>
+          <p>Enjoy absolute client-side protection: since no files or texts are transferred to databases, it remains the safest portal. Works fluently across mobile touch devices, iPads, laptops, and desktop browsers alike.</p>
+        </div>
+      </div>
+    </div>
+  
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div>
+        <a href="../index.html" class="logo mb-16">
+          <i data-lucide="layers"></i> Multi<span>Tools</span>
+        </a>
+        <p class="footer-brand-desc">
+          Your premium all-in-one suite of 25 secure, responsive, client-side tools running entirely inside your browser. No server storage, no limits.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../tools/scientific-calculator.html" class="footer-link">Scientific Calculator</a></li>
+          <li><a href="../tools/qr-code-generator.html" class="footer-link">QR Code Generator</a></li>
+          <li><a href="../tools/image-compressor.html" class="footer-link">Image Compressor</a></li>
+          <li><a href="../tools/password-generator.html" class="footer-link">Password Generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../contact.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MultiTools. All rights reserved. 100% browser-safe client-side software.</p>
+      <div style="display: flex; gap: 16px;">
+        <a href="../privacy-policy.html" class="footer-link">Privacy</a>
+        <a href="../disclaimer.html" class="footer-link">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+      const PRESETS = {
+        yes_no: [
+          { name: 'Yes', color: '#22c55e' },
+          { name: 'No', color: '#ef4444' },
+          { name: 'Maybe', color: '#3b82f6' },
+          { name: 'Yes', color: '#10b981' },
+          { name: 'No', color: '#dc2626' },
+          { name: 'Ask Again', color: '#eab308' }
+        ],
+        dinner: [
+          { name: 'Pizza 🍕', color: '#ef4444' },
+          { name: 'Sushi 🍣', color: '#3b82f6' },
+          { name: 'Burger 🍔', color: '#f97316' },
+          { name: 'Tacos 🌮', color: '#eab308' },
+          { name: 'Pasta 🍝', color: '#10b981' },
+          { name: 'Salad 🥗', color: '#a855f7' }
+        ],
+        truth_dare: [
+          { name: 'Truth 📜', color: '#3b82f6' },
+          { name: 'Dare 🔥', color: '#ef4444' },
+          { name: 'Truth 📜', color: '#10b981' },
+          { name: 'Dare 🔥', color: '#f97316' },
+          { name: 'Truth 📜', color: '#8b5cf6' },
+          { name: 'Dare 🔥', color: '#ec4899' }
+        ],
+        numbers: [
+          { name: 'One (1)', color: '#3b82f6' },
+          { name: 'Two (2)', color: '#ef4444' },
+          { name: 'Three (3)', color: '#10b981' },
+          { name: 'Four (4)', color: '#eab308' },
+          { name: 'Five (5)', color: '#f97316' },
+          { name: 'Six (6)', color: '#a855f7' }
+        ],
+        activities: [
+          { name: 'Read a Book 📚', color: '#3b82f6' },
+          { name: 'Watch a Movie 🎬', color: '#ef4444' },
+          { name: 'Outdoor Walk 🌳', color: '#10b981' },
+          { name: 'Play Video Games 🎮', color: '#eab308' },
+          { name: 'Bake Something 🧁', color: '#f97316' },
+          { name: 'Work on Side Project 💻', color: '#a855f7' }
+        ]
+      };
+
+      const PALETTES = {
+        rainbow: ['#ef4444', '#f97316', '#facc15', '#22c55e', '#3b82f6', '#6366f1', '#a855f7', '#ec4899'],
+        pastel: ['#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', '#bae1ff', '#e8ceff', '#ffc6ff', '#cbd5e1'],
+        neon: ['#ff007f', '#00f3ff', '#39ff14', '#ff073a', '#e0b0ff', '#fff01f', '#fe019a', '#08e8de'],
+        ocean: ['#0284c7', '#0369a1', '#075985', '#0c4a6e', '#0e7490', '#155e75', '#164e63', '#0891b2'],
+        sunset: ['#f43f5e', '#ec4899', '#d946ef', '#a855f7', '#f97316', '#f59e0b', '#eab308', '#f87171'],
+        monochrome: ['#475569', '#334155', '#1e293b', '#64748b', '#94a3b8', '#cbd5e1', '#e2e8f0', '#f8fafc']
+      };
+
+      let options = [];
+      let currentAngle = 0;
+      let angleSpeed = 0;
+      let lastSegmentIndex = -1;
+      let state = 'IDLE'; // IDLE, SPINNING, CELEBRATING
+      let currentWinnerIdx = -1;
+      let confettiParticles = [];
+      let audioCtx = null;
+
+      const canvas = document.getElementById('wheel-canvas');
+      const ctx = canvas.getContext('2d');
+      const canvasWrapper = canvas.parentElement;
+
+      function getHistory() {
+        const raw = localStorage.getItem('decision_wheel_options');
+        return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(PRESETS.yes_no));
+      }
+
+      function saveHistory(data) {
+        localStorage.setItem('decision_wheel_options', JSON.stringify(data));
+      }
+
+      function isDarkTheme() {
+        return document.documentElement.getAttribute('data-theme') === 'dark';
+      }
+
+      function getContrastYIQ(hexcolor){
+        if (!hexcolor || hexcolor.charAt(0) !== '#') return '#ffffff';
+        const r = parseInt(hexcolor.substr(1,2),16);
+        const g = parseInt(hexcolor.substr(3,2),16);
+        const b = parseInt(hexcolor.substr(5,2),16);
+        const yiq = ((r*299)+(g*587)+(b*114))/1000;
+        return (yiq >= 128) ? '#1e293b' : '#ffffff';
+      }
+
+      function playTickSound() {
+        if (!document.getElementById('chk-sound').checked) return;
+        try {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(420, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.04);
+          
+          gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.04);
+          
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.04);
+        } catch (e) {
+          console.warn('Audio click failed:', e);
+        }
+      }
+
+      function playWinSound() {
+        if (!document.getElementById('chk-sound').checked) return;
+        try {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          const now = audioCtx.currentTime;
+          const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5 arpeggio
+          notes.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.09);
+            
+            gain.gain.setValueAtTime(0.12, now + idx * 0.09);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.09 + 0.25);
+            
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            osc.start(now + idx * 0.09);
+            osc.stop(now + idx * 0.09 + 0.25);
+          });
+        } catch (e) {
+          console.warn('Audio fanfare failed:', e);
+        }
+      }
+
+      function initConfetti(cx, cy) {
+        confettiParticles = [];
+        const colors = ['#f59e0b', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6', '#f43f5e', '#14b8a6'];
+        for (let i = 0; i < 90; i++) {
+          const angle = Math.random() * 2 * Math.PI;
+          const speed = Math.random() * 5 + 3;
+          confettiParticles.push({
+            x: cx,
+            y: cy,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - (Math.random() * 1.5 + 1.2),
+            color: colors[Math.floor(Math.random() * colors.length)],
+            size: Math.random() * 7 + 4,
+            rotation: Math.random() * 2 * Math.PI,
+            rotationSpeed: (Math.random() - 0.5) * 0.18,
+            opacity: 1,
+            decay: Math.random() * 0.009 + 0.006
+          });
+        }
+      }
+
+      function drawConfetti(cx, cy, size) {
+        let activeParticles = 0;
+        for (let i = 0; i < confettiParticles.length; i++) {
+          const p = confettiParticles[i];
+          if (p.opacity <= 0) continue;
+          activeParticles++;
+          
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.opacity;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+          
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.12; // Gravity
+          p.vx *= 0.98;
+          p.rotation += p.rotationSpeed;
+          p.opacity -= p.decay;
+        }
+        ctx.globalAlpha = 1.0;
+        
+        if (activeParticles > 0 && state === 'CELEBRATING') {
+          setTimeout(() => {
+            if (state === 'CELEBRATING') {
+              drawWheel();
+            }
+          }, 16);
+        }
+      }
+
+      function drawWheel() {
+        const dpr = window.devicePixelRatio || 1;
+        const size = Math.min(canvasWrapper.clientWidth, 400);
+        canvas.width = size * dpr;
+        canvas.height = size * dpr;
+        canvas.style.width = size + 'px';
+        canvas.style.height = size + 'px';
+        
+        ctx.resetTransform();
+        ctx.scale(dpr, dpr);
+        
+        const cx = size / 2;
+        const cy = size / 2;
+        const radius = size / 2 - 10;
+        
+        const len = options.length;
+        if (len === 0) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+          ctx.fillStyle = isDarkTheme() ? '#1e293b' : '#f1f5f9';
+          ctx.fill();
+          
+          ctx.beginPath();
+          ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+          ctx.strokeStyle = isDarkTheme() ? '#334155' : '#cbd5e1';
+          ctx.lineWidth = 4;
+          ctx.stroke();
+          
+          ctx.fillStyle = isDarkTheme() ? '#64748b' : '#94a3b8';
+          ctx.font = 'bold 15px var(--font-sans)';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('Please add some options!', cx, cy);
+          return;
+        }
+        
+        const arc = 2 * Math.PI / len;
+        
+        // Render Slices
+        for (let i = 0; i < len; i++) {
+          const angle = currentAngle + i * arc;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.arc(cx, cy, radius, angle, angle + arc);
+          ctx.fillStyle = options[i].color;
+          ctx.fill();
+          
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
+          ctx.strokeStyle = 'rgba(0,0,0,0.18)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          
+          // Slice Text
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(angle + arc / 2);
+          ctx.textAlign = 'right';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = getContrastYIQ(options[i].color);
+          
+          let fontSize = 14;
+          if (len > 12) fontSize = 10;
+          else if (len > 8) fontSize = 12;
+          ctx.font = `bold ${fontSize}px var(--font-sans)`;
+          
+          const maxTextWidth = radius * 0.65;
+          let text = options[i].name;
+          if (ctx.measureText(text).width > maxTextWidth) {
+            while (text.length > 0 && ctx.measureText(text + '...').width > maxTextWidth) {
+              text = text.slice(0, -1);
+            }
+            text += '...';
+          }
+          
+          ctx.fillText(text, radius - 20, 0);
+          ctx.restore();
+        }
+        
+        // Outer Rim Ring
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+        ctx.strokeStyle = isDarkTheme() ? '#334155' : '#1e293b';
+        ctx.lineWidth = 6;
+        ctx.stroke();
+        
+        // Silver-Golden Divider Stud Jewels
+        const dots = Math.max(len * 2, 12);
+        const dotArc = 2 * Math.PI / dots;
+        for (let i = 0; i < dots; i++) {
+          const dAngle = currentAngle + i * dotArc;
+          const dx = cx + radius * Math.cos(dAngle);
+          const dy = cy + radius * Math.sin(dAngle);
+          ctx.beginPath();
+          ctx.arc(dx, dy, 3.5, 0, 2 * Math.PI);
+          ctx.fillStyle = '#f59e0b';
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 1;
+          ctx.fill();
+          ctx.stroke();
+        }
+        
+        // Central Metallic Peg Cap
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius * 0.16, 0, 2 * Math.PI);
+        ctx.fillStyle = isDarkTheme() ? '#1e293b' : '#ffffff';
+        ctx.shadowColor = 'rgba(0,0,0,0.22)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 1.5;
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+        
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius * 0.16, 0, 2 * Math.PI);
+        ctx.strokeStyle = isDarkTheme() ? '#cbd5e1' : '#1e293b';
+        ctx.lineWidth = 3.5;
+        ctx.stroke();
+        
+        if (state === 'CELEBRATING') {
+          drawConfetti(cx, cy, size);
+        }
+      }
+
+      function triggerPointerTick() {
+        const pointer = document.getElementById('wheel-pointer');
+        if (pointer) {
+          pointer.classList.add('ticking');
+          setTimeout(() => {
+            pointer.classList.remove('ticking');
+          }, 50);
+        }
+      }
+
+      function spinLoop() {
+        if (state !== 'SPINNING') return;
+        
+        currentAngle += angleSpeed;
+        angleSpeed *= 0.985; // smooth friction deceleration
+        
+        const len = options.length;
+        if (len > 0) {
+          const arc = 2 * Math.PI / len;
+          const topPointerOffset = -Math.PI / 2;
+          const pointerOnWheel = topPointerOffset - currentAngle;
+          const normAngle = (pointerOnWheel % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+          const currentSegment = Math.floor(normAngle / arc);
+          
+          if (currentSegment !== lastSegmentIndex) {
+            lastSegmentIndex = currentSegment;
+            playTickSound();
+            triggerPointerTick();
+          }
+        }
+        
+        drawWheel();
+        
+        if (angleSpeed < 0.001) {
+          state = 'CELEBRATING';
+          angleSpeed = 0;
+          evaluateWinner();
+        } else {
+          requestAnimationFrame(spinLoop);
+        }
+      }
+
+      function triggerSpin() {
+        if (state === 'SPINNING') return;
+        if (options.length === 0) {
+          window.showToast('Add some segments first!');
+          return;
+        }
+        
+        state = 'SPINNING';
+        angleSpeed = Math.random() * 0.14 + 0.23; // dynamic randomized speed
+        lastSegmentIndex = -1;
+        
+        document.getElementById('winner-modal').classList.remove('active');
+        setControlState(true);
+        spinLoop();
+      }
+
+      function setControlState(disabled) {
+        document.getElementById('btn-spin-center').disabled = disabled;
+        document.getElementById('btn-spin-main').disabled = disabled;
+        document.getElementById('btn-reset-options').disabled = disabled;
+        document.getElementById('btn-clear-all').disabled = disabled;
+        document.getElementById('preset-select').disabled = disabled;
+        document.getElementById('palette-select').disabled = disabled;
+        document.getElementById('new-option-input').disabled = disabled;
+        document.querySelector('.options-list-container').style.opacity = disabled ? '0.6' : '1';
+        document.querySelector('.options-list-container').style.pointerEvents = disabled ? 'none' : 'auto';
+      }
+
+      function evaluateWinner() {
+        setControlState(false);
+        const len = options.length;
+        if (len === 0) return;
+        
+        const arc = 2 * Math.PI / len;
+        const topPointerOffset = -Math.PI / 2;
+        const pointerOnWheel = topPointerOffset - currentAngle;
+        const normAngle = (pointerOnWheel % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        const winnerIndex = Math.floor(normAngle / arc) % len;
+        
+        currentWinnerIdx = winnerIndex;
+        const winner = options[winnerIndex];
+        
+        const size = Math.min(canvasWrapper.clientWidth, 400);
+        initConfetti(size / 2, size / 2);
+        playWinSound();
+        drawWheel();
+        
+        setTimeout(() => {
+          const autoRemove = document.getElementById('chk-remove-winner').checked;
+          if (autoRemove) {
+            window.showToast(`Winner: "${winner.name}"! Removing option...`);
+            setTimeout(() => {
+              removeOptionByIndex(winnerIndex);
+              state = 'IDLE';
+              drawWheel();
+            }, 1200);
+          } else {
+            document.getElementById('winner-display-name').textContent = winner.name;
+            document.getElementById('winner-modal').classList.add('active');
+          }
+        }, 300);
+      }
+
+      function removeOptionByIndex(idx) {
+        options.splice(idx, 1);
+        saveHistory(options);
+        renderOptionsList();
+        drawWheel();
+      }
+
+      function getNextColor() {
+        const paletteKey = document.getElementById('palette-select').value;
+        const colors = PALETTES[paletteKey];
+        return colors[options.length % colors.length];
+      }
+
+      function renderOptionsList() {
+        const listEl = document.getElementById('options-list');
+        const countEl = document.getElementById('option-count');
+        
+        countEl.textContent = options.length;
+        listEl.innerHTML = '';
+        
+        if (options.length === 0) {
+          listEl.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 16px; font-style: italic; font-size: 13px;">No segments added yet.</div>';
+          return;
+        }
+        
+        options.forEach((opt, idx) => {
+          const item = document.createElement('div');
+          item.className = 'option-item';
+          item.dataset.index = idx;
+          
+          item.innerHTML = `
+            <div class="option-color-block" style="background: ${opt.color};">
+              <input type="color" class="opt-color-input" value="${opt.color}" title="Change color">
+            </div>
+            <span class="option-name-span" title="Double click to rename">${opt.name}</span>
+            <button class="option-action-btn btn-edit" title="Rename segment">
+              <i data-lucide="edit-3" style="width: 13px; height: 13px;"></i>
+            </button>
+            <button class="option-action-btn btn-delete" title="Remove segment">
+              <i data-lucide="trash-2" style="width: 13px; height: 13px;"></i>
+            </button>
+          `;
+          
+          const colorInput = item.querySelector('.opt-color-input');
+          colorInput.addEventListener('input', (e) => {
+            opt.color = e.target.value;
+            item.querySelector('.option-color-block').style.background = opt.color;
+            saveHistory(options);
+            drawWheel();
+          });
+          
+          const nameSpan = item.querySelector('.option-name-span');
+          const editBtn = item.querySelector('.btn-edit');
+          
+          const triggerRename = () => {
+            if (item.classList.contains('editing')) return;
+            item.classList.add('editing');
+            
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'option-name-input';
+            input.value = opt.name;
+            input.maxLength = 40;
+            
+            item.replaceChild(input, nameSpan);
+            input.focus();
+            input.select();
+            
+            const saveRename = () => {
+              const val = input.value.trim();
+              if (val) {
+                opt.name = val;
+                saveHistory(options);
+              }
+              renderOptionsList();
+              drawWheel();
+            };
+            
+            input.addEventListener('blur', saveRename);
+            input.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') saveRename();
+              else if (e.key === 'Escape') renderOptionsList();
+            });
+          };
+          
+          nameSpan.addEventListener('dblclick', triggerRename);
+          editBtn.addEventListener('click', triggerRename);
+          
+          item.querySelector('.btn-delete').addEventListener('click', () => {
+            removeOptionByIndex(idx);
+          });
+          
+          listEl.appendChild(item);
+        });
+        
+        lucide.createIcons();
+      }
+
+      function applyPaletteTheme() {
+        const key = document.getElementById('palette-select').value;
+        const colors = PALETTES[key];
+        options.forEach((opt, idx) => {
+          opt.color = colors[idx % colors.length];
+        });
+        saveHistory(options);
+        renderOptionsList();
+        drawWheel();
+      }
+
+      // Event Listeners setup
+      document.getElementById('btn-spin-center').addEventListener('click', triggerSpin);
+      document.getElementById('btn-spin-main').addEventListener('click', triggerSpin);
+      
+      canvas.addEventListener('click', () => {
+        if (state === 'IDLE' || state === 'CELEBRATING') {
+          triggerSpin();
+        }
+      });
+
+      document.getElementById('palette-select').addEventListener('change', applyPaletteTheme);
+
+      document.getElementById('preset-select').addEventListener('change', (e) => {
+        const val = e.target.value;
+        if (val !== 'custom' && PRESETS[val]) {
+          options = JSON.parse(JSON.stringify(PRESETS[val]));
+          saveHistory(options);
+          renderOptionsList();
+          drawWheel();
+          window.showToast('Preset loaded successfully!');
+        }
+      });
+
+      document.getElementById('add-option-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.getElementById('new-option-input');
+        const colorInput = document.getElementById('new-option-color');
+        const name = input.value.trim();
+        
+        if (name) {
+          if (options.length >= 24) {
+            window.showToast('Keep segments under 24 for optimal legibility.');
+            return;
+          }
+          
+          options.push({ name, color: colorInput.value });
+          saveHistory(options);
+          renderOptionsList();
+          drawWheel();
+          
+          input.value = '';
+          colorInput.value = getNextColor();
+          document.getElementById('preset-select').value = 'custom';
+        }
+      });
+
+      document.getElementById('btn-reset-options').addEventListener('click', () => {
+        if (confirm('Reset wheel back to default Yes/No/Maybe configuration?')) {
+          options = JSON.parse(JSON.stringify(PRESETS.yes_no));
+          document.getElementById('preset-select').value = 'yes_no';
+          saveHistory(options);
+          renderOptionsList();
+          drawWheel();
+          window.showToast('Wheel reset.');
+        }
+      });
+
+      document.getElementById('btn-clear-all').addEventListener('click', () => {
+        if (confirm('Clear all segments from the wheel?')) {
+          options = [];
+          document.getElementById('preset-select').value = 'custom';
+          saveHistory(options);
+          renderOptionsList();
+          drawWheel();
+          window.showToast('Wheel cleared.');
+        }
+      });
+
+      document.getElementById('winner-btn-close').addEventListener('click', () => {
+        document.getElementById('winner-modal').classList.remove('active');
+        state = 'IDLE';
+        drawWheel();
+      });
+
+      document.getElementById('winner-btn-remove').addEventListener('click', () => {
+        document.getElementById('winner-modal').classList.remove('active');
+        if (currentWinnerIdx !== -1) {
+          const name = options[currentWinnerIdx]?.name || 'Segment';
+          removeOptionByIndex(currentWinnerIdx);
+          window.showToast(`Removed "${name}" from the wheel.`);
+        }
+        state = 'IDLE';
+        drawWheel();
+      });
+
+      window.addEventListener('themechanged', () => {
+        drawWheel();
+      });
+
+      // ResizeObserver to scale elegantly on resize
+      const resizeObs = new ResizeObserver(() => {
+        drawWheel();
+      });
+      resizeObs.observe(canvasWrapper);
+
+      // Initial Setup
+      options = getHistory();
+      renderOptionsList();
+      drawWheel();
+    
+      });
+    </script>
+  
+</body>
+</html>
