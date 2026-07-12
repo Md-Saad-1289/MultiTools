@@ -1,20 +1,29 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+### MultiTools
+---
+A modern collection of free online tools built with HTML, CSS, and Vanilla JavaScript. Fast, responsive, privacy-friendly, and works entirely in your browser—no backend or API keys required.
 
-# Run and deploy your AI Studio app
+✨ Features
 
-This contains everything you need to run your app locally.
+    20+ Free Online Tools
+    Responsive Design
+    Dark & Light Mode
+    Fast & Lightweight
+    Browser-Based Processing
+    No API Keys
+    No Backend Required
 
-View your app in AI Studio: https://ai.studio/apps/18679118-0f38-4cbb-8fa8-50bf8a8e77c4
+🛠️ Built With
 
-## Run Locally
+    HTML5
+    CSS3
+    Vanilla JavaScript
 
-**Prerequisites:**  Node.js
+🚀 Run Locally
 
+>Simply open "index.html" in your browser.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+📄 License
+
+>Licensed under the MIT License.
+
+⭐ If you like this project, don't forget to star the repository!
