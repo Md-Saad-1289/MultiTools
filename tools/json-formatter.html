@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter & Validator - MultiTools Premium Web Utilities</title>
+  <meta name="description" content="Validate, beautify, formatting with 2/4 space indentation, or minify raw JSON strings instantly.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.354.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="logo" id="site-logo">
+        <i data-lucide="layers" id="logo-icon"></i> Multi<span>Tools</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link ">Home</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="tools-dropdown-toggle">
+            Tools <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+          </a>
+          <div class="dropdown-menu-container">
+            <div class="dropdown-menu-grid">
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="calculator"></i> Calculators</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/scientific-calculator.html">Scientific Calculator</a></li>
+                  <li><a href="../tools/loan-emi-calculator.html">Loan EMI Calculator</a></li>
+                  <li><a href="../tools/age-calculator.html">Age Calculator</a></li>
+                  <li><a href="../tools/bmi-calculator.html">BMI Calculator</a></li>
+                  <li><a href="../tools/unit-converter.html">Unit Converter</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="code"></i> Dev Utilities</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/qr-code-generator.html">QR Code Generator</a></li>
+                  <li><a href="../tools/password-generator.html">Password Generator</a></li>
+                  <li><a href="../tools/base64-encoder-decoder.html">Base64 Encoder/Decoder</a></li>
+                  <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                  <li><a href="../tools/hash-generator.html">SHA-256 & MD5 Generator</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="palette"></i> Design & Text</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/color-picker.html">Color Picker</a></li>
+                  <li><a href="../tools/css-gradient-generator.html">Gradient Generator</a></li>
+                  <li><a href="../tools/image-compressor.html">Image Compressor</a></li>
+                  <li><a href="../tools/word-counter.html">Word & Character Counter</a></li>
+                  <li><a href="../tools/stopwatch-timer.html">Stopwatch & Timer</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="../index.html#tools-section" class="dropdown-all-btn">
+                <span>View All Premium Tools (21 total)</span> <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../about.html" class="nav-link ">About</a></li>
+        <li><a href="../contact.html" class="nav-link ">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="light-icon" id="sun-icon"></i>
+          <i data-lucide="moon" class="dark-icon" id="moon-icon"></i>
+        </button>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <i data-lucide="menu" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="fade-in">
+    
+    <div class="container" style="margin-top: 20px;">
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <div class="breadcrumbs-separator"><i data-lucide="chevron-right"></i></div>
+        <span style="color:var(--text-primary);">JSON Formatter & Validator</span>
+      </div>
+
+      <div class="tool-layout">
+        <!-- Main Tool Column -->
+        <div class="tool-panel">
+          <h1 style="font-size:32px; margin-bottom:12px;">JSON Formatter & Validator</h1>
+          <p class="mb-32" style="color:var(--text-muted); font-size:15px;">Validate, beautify, formatting with 2/4 space indentation, or minify raw JSON strings instantly.</p>
+          
+          <div style="margin-top:20px;">
+            
+      <div class="form-group">
+        <label class="form-label" for="json-input">Raw JSON Input</label>
+        <textarea id="json-input" class="form-control" style="font-family: 'JetBrains Mono', monospace; height: 180px; font-size: 14px;" placeholder='{"name": "MultiTools", "isPremium": true}'></textarea>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:20px;">
+        <button id="btn-fmt-2" class="btn btn-secondary btn-sm">Format (2 Spaces)</button>
+        <button id="btn-fmt-4" class="btn btn-secondary btn-sm">Format (4 Spaces)</button>
+        <button id="btn-minify" class="btn btn-secondary btn-sm">Minify JSON</button>
+        <button id="btn-validate" class="btn btn-primary btn-sm">Validate JSON</button>
+        <button id="btn-copy-json" class="btn btn-secondary btn-sm" style="margin-left:auto;"><i data-lucide="copy" style="width:14px;height:14px;"></i> Copy</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Formatted Output & Validation logs</label>
+        <div id="json-feedback" style="display:none; padding:12px; border-radius:var(--radius-sm); font-size:14px; margin-bottom:12px; font-weight:600;"></div>
+        <textarea id="json-output" class="form-control" style="font-family: 'JetBrains Mono', monospace; height: 220px; font-size: 14px;" readonly></textarea>
+      </div>
+    
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="card" style="height:fit-content; padding:24px;">
+          <h3 class="mb-16">Quick Instructions</h3>
+          <ul class="footer-links" style="padding-left:16px; list-style:disc; color:var(--text-secondary); margin-bottom:24px; font-size:14px; line-height:1.6;">
+            <li>Fill in all parameter sliders or text input boxes.</li>
+            <li>Calculations run entirely safe and local inside your browser.</li>
+            <li>Use the standard Copy buttons to copy outputs instantly.</li>
+          </ul>
+
+          <h3 class="mb-16">Security & Privacy</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.5;">
+            Our suite executes 100% locally. None of your data, text inputs, password profiles, or uploaded images are ever sent to external cloud servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- SEO Informational Block -->
+      <div class="tool-info-section">
+        <div class="tool-info-block">
+          <h3>Why use the online JSON Formatter & Validator?</h3>
+          <p>This premium JSON Formatter & Validator represents a client-side tool optimized for immediate results. Designed with lightweight modern CSS frames and standard calculations, it loads within milliseconds and operates offline without lag.</p>
+        </div>
+        <div class="tool-info-block">
+          <h3>Key Features & Advantages</h3>
+          <p>Enjoy absolute client-side protection: since no files or texts are transferred to databases, it remains the safest portal. Works fluently across mobile touch devices, iPads, laptops, and desktop browsers alike.</p>
+        </div>
+      </div>
+    </div>
+  
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div>
+        <a href="../index.html" class="logo mb-16">
+          <i data-lucide="layers"></i> Multi<span>Tools</span>
+        </a>
+        <p class="footer-brand-desc">
+          Your premium all-in-one suite of 21 secure, responsive, client-side tools running entirely inside your browser. No server storage, no limits.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../tools/scientific-calculator.html" class="footer-link">Scientific Calculator</a></li>
+          <li><a href="../tools/qr-code-generator.html" class="footer-link">QR Code Generator</a></li>
+          <li><a href="../tools/image-compressor.html" class="footer-link">Image Compressor</a></li>
+          <li><a href="../tools/password-generator.html" class="footer-link">Password Generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../contact.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MultiTools. All rights reserved. 100% browser-safe client-side software.</p>
+      <div style="display: flex; gap: 16px;">
+        <a href="../privacy-policy.html" class="footer-link">Privacy</a>
+        <a href="../disclaimer.html" class="footer-link">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+      const input = document.getElementById('json-input');
+      const output = document.getElementById('json-output');
+      const feedback = document.getElementById('json-feedback');
+
+      function processJSON(spaces, minify = false) {
+        feedback.style.display = 'none';
+        const val = input.value.trim();
+        if (!val) return;
+        
+        try {
+          const parsed = JSON.parse(val);
+          output.value = minify ? JSON.stringify(parsed) : JSON.stringify(parsed, null, spaces);
+          feedback.textContent = '✓ Valid JSON String';
+          feedback.style.backgroundColor = 'rgba(16, 185, 129, 0.15)';
+          feedback.style.color = 'var(--color-accent)';
+          feedback.style.display = 'block';
+        } catch (err) {
+          output.value = '';
+          feedback.textContent = '✗ Invalid JSON: ' + err.message;
+          feedback.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
+          feedback.style.color = 'var(--color-danger)';
+          feedback.style.display = 'block';
+        }
+      }
+
+      document.getElementById('btn-fmt-2').addEventListener('click', () => processJSON(2));
+      document.getElementById('btn-fmt-4').addEventListener('click', () => processJSON(4));
+      document.getElementById('btn-minify').addEventListener('click', () => processJSON(0, true));
+      document.getElementById('btn-validate').addEventListener('click', () => processJSON(2));
+      
+      document.getElementById('btn-copy-json').addEventListener('click', () => {
+        if (output.value) {
+          navigator.clipboard.writeText(output.value);
+          window.showToast('Copied JSON string to clipboard!');
+        }
+      });
+    
+      });
+    </script>
+  
+</body>
+</html>

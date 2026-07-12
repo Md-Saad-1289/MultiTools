@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Calculator - MultiTools Premium Web Utilities</title>
+  <meta name="description" content="An advanced scientific calculator featuring trigonometry, inverse functions, logarithms, powers, roots, brackets, memory, and click-to-load calculation history.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.354.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="logo" id="site-logo">
+        <i data-lucide="layers" id="logo-icon"></i> Multi<span>Tools</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="../index.html" class="nav-link ">Home</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="tools-dropdown-toggle">
+            Tools <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+          </a>
+          <div class="dropdown-menu-container">
+            <div class="dropdown-menu-grid">
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="calculator"></i> Calculators</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/scientific-calculator.html">Scientific Calculator</a></li>
+                  <li><a href="../tools/loan-emi-calculator.html">Loan EMI Calculator</a></li>
+                  <li><a href="../tools/age-calculator.html">Age Calculator</a></li>
+                  <li><a href="../tools/bmi-calculator.html">BMI Calculator</a></li>
+                  <li><a href="../tools/unit-converter.html">Unit Converter</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="code"></i> Dev Utilities</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/qr-code-generator.html">QR Code Generator</a></li>
+                  <li><a href="../tools/password-generator.html">Password Generator</a></li>
+                  <li><a href="../tools/base64-encoder-decoder.html">Base64 Encoder/Decoder</a></li>
+                  <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                  <li><a href="../tools/hash-generator.html">SHA-256 & MD5 Generator</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <h5 class="dropdown-col-title"><i data-lucide="palette"></i> Design & Text</h5>
+                <ul class="dropdown-col-links">
+                  <li><a href="../tools/color-picker.html">Color Picker</a></li>
+                  <li><a href="../tools/css-gradient-generator.html">Gradient Generator</a></li>
+                  <li><a href="../tools/image-compressor.html">Image Compressor</a></li>
+                  <li><a href="../tools/word-counter.html">Word & Character Counter</a></li>
+                  <li><a href="../tools/stopwatch-timer.html">Stopwatch & Timer</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="../index.html#tools-section" class="dropdown-all-btn">
+                <span>View All Premium Tools (21 total)</span> <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="../about.html" class="nav-link ">About</a></li>
+        <li><a href="../contact.html" class="nav-link ">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="light-icon" id="sun-icon"></i>
+          <i data-lucide="moon" class="dark-icon" id="moon-icon"></i>
+        </button>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <i data-lucide="menu" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="fade-in">
+    
+    <div class="container" style="margin-top: 20px;">
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <div class="breadcrumbs-separator"><i data-lucide="chevron-right"></i></div>
+        <span style="color:var(--text-primary);">Scientific Calculator</span>
+      </div>
+
+      <div class="tool-layout">
+        <!-- Main Tool Column -->
+        <div class="tool-panel">
+          <h1 style="font-size:32px; margin-bottom:12px;">Scientific Calculator</h1>
+          <p class="mb-32" style="color:var(--text-muted); font-size:15px;">An advanced scientific calculator featuring trigonometry, inverse functions, logarithms, powers, roots, brackets, memory, and click-to-load calculation history.</p>
+          
+          <div style="margin-top:20px;">
+            
+      <div class="calculator-container" style="max-width: 100%; margin: 0 auto;">
+        <!-- Double-line Screen -->
+        <div class="calc-screen-container" style="background: var(--bg-surface-secondary); border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px 20px; margin-bottom: 20px; box-shadow: inset var(--shadow-sm); position: relative; overflow: hidden;">
+          <!-- Angle Mode Indicator & Memory Indicator -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
+            <div>
+              <span id="calc-mode-indicator" class="badge" style="background: var(--bg-surface); color: var(--color-primary); border: 1px solid var(--border-color); padding: 2px 6px; font-size: 10px; border-radius: var(--radius-sm); margin-right: 6px;">DEG</span>
+              <span id="calc-mem-indicator" style="display: none; background: var(--border-color); padding: 2px 6px; font-size: 10px; border-radius: var(--radius-sm);">M</span>
+            </div>
+            <div id="calc-expression-preview" style="max-width: 75%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace;"></div>
+          </div>
+          <!-- Main screen input -->
+          <input type="text" id="calc-screen" class="form-control" style="border: none; background: transparent; box-shadow: none; padding: 0; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; text-align: right; width: 100%; color: var(--text-primary); letter-spacing: 0.5px;" readonly value="0">
+        </div>
+
+        <!-- Mode Selector & Memory Bar -->
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+          <button class="btn btn-secondary btn-sm" id="btn-toggle-mode" style="font-family: 'JetBrains Mono', monospace; font-weight: 700; min-width: 80px; padding: 6px 12px; font-size: 12px;">DEG ⇆ RAD</button>
+          <button class="btn btn-secondary btn-sm calc-mem-btn" data-action="mc" style="padding: 6px 12px; font-size: 12px; font-family: 'JetBrains Mono', monospace;">MC</button>
+          <button class="btn btn-secondary btn-sm calc-mem-btn" data-action="mr" style="padding: 6px 12px; font-size: 12px; font-family: 'JetBrains Mono', monospace;">MR</button>
+          <button class="btn btn-secondary btn-sm calc-mem-btn" data-action="mplus" style="padding: 6px 12px; font-size: 12px; font-family: 'JetBrains Mono', monospace;">M+</button>
+          <button class="btn btn-secondary btn-sm calc-mem-btn" data-action="mminus" style="padding: 6px 12px; font-size: 12px; font-family: 'JetBrains Mono', monospace;">M-</button>
+          <button class="btn btn-secondary btn-sm calc-mem-btn" data-action="ms" style="padding: 6px 12px; font-size: 12px; font-family: 'JetBrains Mono', monospace;">MS</button>
+        </div>
+
+        <div class="calculator-grid-layout" style="display: grid; grid-template-columns: 2.5fr 1.2fr; gap: 20px;">
+          <!-- Buttons Area -->
+          <div>
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+              <!-- Trig / Scientific row 1 -->
+              <button class="btn btn-secondary calc-btn" data-val="sin" title="Sine" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">sin</button>
+              <button class="btn btn-secondary calc-btn" data-val="cos" title="Cosine" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">cos</button>
+              <button class="btn btn-secondary calc-btn" data-val="tan" title="Tangent" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">tan</button>
+              <button class="btn btn-secondary calc-btn" data-val="asin" title="Arcsine" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 12px 4px;">sin⁻¹</button>
+              <button class="btn btn-secondary calc-btn" data-val="acos" title="Arccosine" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 12px 4px;">cos⁻¹</button>
+
+              <!-- Trig / Scientific row 2 -->
+              <button class="btn btn-secondary calc-btn" data-val="atan" title="Arctangent" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 12px 4px;">tan⁻¹</button>
+              <button class="btn btn-secondary calc-btn" data-val="log" title="Logarithm (base 10)" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">log</button>
+              <button class="btn btn-secondary calc-btn" data-val="ln" title="Natural Logarithm (base e)" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">ln</button>
+              <button class="btn btn-secondary calc-btn" data-val="sqrt" title="Square Root" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">√</button>
+              <button class="btn btn-secondary calc-btn" data-val="cbrt" title="Cube Root" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">³√</button>
+
+              <!-- Powers & Algebra row -->
+              <button class="btn btn-secondary calc-btn" data-val="^" title="Power" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">xʸ</button>
+              <button class="btn btn-secondary calc-btn" data-val="^2" title="Square" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">x²</button>
+              <button class="btn btn-secondary calc-btn" data-val="^3" title="Cube" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">x³</button>
+              <button class="btn btn-secondary calc-btn" data-val="abs" title="Absolute Value" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">|x|</button>
+              <button class="btn btn-secondary calc-btn" data-val="!" title="Factorial" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">x!</button>
+
+              <!-- Utility row -->
+              <button class="btn btn-secondary calc-btn" data-val="pi" title="Pi Constant" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">π</button>
+              <button class="btn btn-secondary calc-btn" data-val="e" title="Euler Constant" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">e</button>
+              <button class="btn btn-secondary calc-btn" data-val="(" title="Open parenthesis" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">(</button>
+              <button class="btn btn-secondary calc-btn" data-val=")" title="Close parenthesis" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">)</button>
+              <button class="btn btn-secondary calc-btn" data-val="%" title="Percentage" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">%</button>
+
+              <!-- Clear & Actions Row -->
+              <button class="btn btn-secondary calc-btn" data-val="Ans" title="Use previous result" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px; color: var(--color-primary);">Ans</button>
+              <button class="btn btn-secondary calc-btn" data-val="mod" title="Modulo (remainder)" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 12px 4px;">mod</button>
+              <button class="btn btn-secondary calc-btn" style="color: var(--color-danger); font-weight: 700;" data-val="C" title="Clear all">C</button>
+              <button class="btn btn-secondary calc-btn" data-val="backspace" title="Delete last character">⌫</button>
+              <button class="btn btn-secondary calc-btn" data-val="/" title="Divide" style="font-size: 16px;">÷</button>
+
+              <!-- Number Rows -->
+              <button class="btn btn-secondary calc-btn btn-num" data-val="7" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">7</button>
+              <button class="btn btn-secondary calc-btn btn-num" data-val="8" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">8</button>
+              <button class="btn btn-secondary calc-btn btn-num" data-val="9" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">9</button>
+              <button class="btn btn-secondary calc-btn" data-val="*" title="Multiply" style="font-size: 16px;">×</button>
+              <button class="btn btn-secondary calc-btn" data-val="-" title="Subtract" style="font-size: 16px;">-</button>
+
+              <button class="btn btn-secondary calc-btn btn-num" data-val="4" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">4</button>
+              <button class="btn btn-secondary calc-btn btn-num" data-val="5" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">5</button>
+              <button class="btn btn-secondary calc-btn btn-num" data-val="6" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">6</button>
+              <button class="btn btn-secondary calc-btn" data-val="+" title="Add" style="font-size: 16px;">+</button>
+              <button class="btn btn-primary calc-btn" style="grid-row: span 2; height: 100%; font-size: 20px; font-weight: 700;" data-val="=" title="Evaluate expression">=</button>
+
+              <button class="btn btn-secondary calc-btn btn-num" data-val="1" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">1</button>
+              <button class="btn btn-secondary calc-btn btn-num" data-val="2" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">2</button>
+              <button class="btn btn-secondary calc-btn btn-num" data-val="3" style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">3</button>
+              <button class="btn btn-secondary calc-btn btn-num" style="grid-column: span 1; font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);" data-val="0">0</button>
+              <button class="btn btn-secondary calc-btn" data-val="." style="font-weight: 600; background: var(--bg-surface); border-color: var(--border-color);">.</button>
+            </div>
+          </div>
+
+          <!-- History Area -->
+          <div class="card" style="padding: 16px; display: flex; flex-direction: column; min-height: 380px; background: var(--bg-surface-secondary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 12px;">
+              <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-primary); margin: 0;">History</h4>
+              <button class="btn btn-secondary btn-sm" id="btn-clear-history" style="padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: var(--radius-sm);">Clear</button>
+            </div>
+            <div id="calc-history-list" style="flex: 1; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; display: flex; flex-direction: column; gap: 8px; max-height: 320px;">
+              <div style="color: var(--text-muted); text-align: center; padding-top: 40px; font-style: italic;">No calculations yet</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keyboard Shortcuts & Instructions Panel -->
+        <div class="card" style="margin-top: 24px; padding: 16px; background: var(--bg-surface);">
+          <h4 class="mb-8" style="font-size: 14px; font-weight: 700; text-transform: uppercase;">Keyboard Support</h4>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+            Type numbers and operators <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">+</code>, <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">-</code>, <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">*</code>, <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">/</code>, <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">^</code> directly. 
+            Press <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">Enter</code> or <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">=</code> for calculation, <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">Backspace</code> to delete, and <code style="background: var(--bg-surface-secondary); padding: 2px 4px; border-radius: 4px;">Esc</code> to clear.
+          </p>
+        </div>
+      </div>
+    
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="card" style="height:fit-content; padding:24px;">
+          <h3 class="mb-16">Quick Instructions</h3>
+          <ul class="footer-links" style="padding-left:16px; list-style:disc; color:var(--text-secondary); margin-bottom:24px; font-size:14px; line-height:1.6;">
+            <li>Fill in all parameter sliders or text input boxes.</li>
+            <li>Calculations run entirely safe and local inside your browser.</li>
+            <li>Use the standard Copy buttons to copy outputs instantly.</li>
+          </ul>
+
+          <h3 class="mb-16">Security & Privacy</h3>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.5;">
+            Our suite executes 100% locally. None of your data, text inputs, password profiles, or uploaded images are ever sent to external cloud servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- SEO Informational Block -->
+      <div class="tool-info-section">
+        <div class="tool-info-block">
+          <h3>Why use the online Scientific Calculator?</h3>
+          <p>This premium Scientific Calculator represents a client-side tool optimized for immediate results. Designed with lightweight modern CSS frames and standard calculations, it loads within milliseconds and operates offline without lag.</p>
+        </div>
+        <div class="tool-info-block">
+          <h3>Key Features & Advantages</h3>
+          <p>Enjoy absolute client-side protection: since no files or texts are transferred to databases, it remains the safest portal. Works fluently across mobile touch devices, iPads, laptops, and desktop browsers alike.</p>
+        </div>
+      </div>
+    </div>
+  
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div>
+        <a href="../index.html" class="logo mb-16">
+          <i data-lucide="layers"></i> Multi<span>Tools</span>
+        </a>
+        <p class="footer-brand-desc">
+          Your premium all-in-one suite of 21 secure, responsive, client-side tools running entirely inside your browser. No server storage, no limits.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="../tools/scientific-calculator.html" class="footer-link">Scientific Calculator</a></li>
+          <li><a href="../tools/qr-code-generator.html" class="footer-link">QR Code Generator</a></li>
+          <li><a href="../tools/image-compressor.html" class="footer-link">Image Compressor</a></li>
+          <li><a href="../tools/password-generator.html" class="footer-link">Password Generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../contact.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MultiTools. All rights reserved. 100% browser-safe client-side software.</p>
+      <div style="display: flex; gap: 16px;">
+        <a href="../privacy-policy.html" class="footer-link">Privacy</a>
+        <a href="../disclaimer.html" class="footer-link">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+      // State variables
+      let expression = '';
+      let activeMode = 'DEG'; // DEG or RAD
+      let lastResult = null;
+      let memory = 0;
+      let history = [];
+
+      // Elements
+      const screen = document.getElementById('calc-screen');
+      const preview = document.getElementById('calc-expression-preview');
+      const modeIndicator = document.getElementById('calc-mode-indicator');
+      const memIndicator = document.getElementById('calc-mem-indicator');
+      const btnToggleMode = document.getElementById('btn-toggle-mode');
+      const historyList = document.getElementById('calc-history-list');
+      const btnClearHistory = document.getElementById('btn-clear-history');
+
+      // Sync localstorage for history if available
+      try {
+        const savedHist = localStorage.getItem('calc_history');
+        if (savedHist) {
+          history = JSON.parse(savedHist);
+          renderHistory();
+        }
+      } catch (e) {}
+
+      // Toggle mode (DEG / RAD)
+      function toggleMode() {
+        activeMode = activeMode === 'DEG' ? 'RAD' : 'DEG';
+        modeIndicator.textContent = activeMode;
+        window.showToast('Switched to ' + activeMode + ' mode');
+      }
+      btnToggleMode.addEventListener('click', toggleMode);
+
+      // Memory Operations
+      document.querySelectorAll('.calc-mem-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const action = btn.getAttribute('data-action');
+          let currentVal = parseFloat(screen.value) || 0;
+          if (isNaN(currentVal)) currentVal = 0;
+
+          if (action === 'mc') {
+            memory = 0;
+            memIndicator.style.display = 'none';
+            window.showToast('Memory Cleared');
+          } else if (action === 'mr') {
+            expression += String(memory);
+            screen.value = expression;
+            preview.textContent = expression;
+          } else if (action === 'mplus') {
+            memory += currentVal;
+            memIndicator.style.display = 'inline-block';
+            window.showToast('Added ' + currentVal + ' to Memory');
+          } else if (action === 'mminus') {
+            memory -= currentVal;
+            memIndicator.style.display = 'inline-block';
+            window.showToast('Subtracted ' + currentVal + ' from Memory');
+          } else if (action === 'ms') {
+            memory = currentVal;
+            memIndicator.style.display = 'inline-block';
+            window.showToast('Stored ' + currentVal + ' in Memory (' + memory + ')');
+          }
+        });
+      });
+
+      // Render History List
+      function renderHistory() {
+        if (history.length === 0) {
+          historyList.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding-top: 40px; font-style: italic;">No calculations yet</div>';
+          return;
+        }
+        historyList.innerHTML = '';
+        history.slice().reverse().forEach((item) => {
+          const div = document.createElement('div');
+          div.className = 'card';
+          div.style.padding = '8px 12px';
+          div.style.cursor = 'pointer';
+          div.style.background = 'var(--bg-surface)';
+          div.style.border = '1px solid var(--border-color)';
+          div.style.borderRadius = 'var(--radius-sm)';
+          div.style.transition = 'all var(--transition-fast)';
+          div.style.wordBreak = 'break-all';
+          
+          div.innerHTML = `
+            <div style="font-size: 11px; color: var(--text-muted); text-align: right; margin-bottom: 2px;">${item.expr}</div>
+            <div style="font-weight: 700; text-align: right; color: var(--color-primary); font-size: 13px;">${item.res}</div>
+          `;
+          
+          div.addEventListener('click', () => {
+            expression = item.expr;
+            screen.value = expression;
+            preview.textContent = expression;
+            window.showToast('Loaded expression from history');
+          });
+          historyList.appendChild(div);
+        });
+      }
+
+      btnClearHistory.addEventListener('click', () => {
+        history = [];
+        try {
+          localStorage.removeItem('calc_history');
+        } catch(e) {}
+        renderHistory();
+        window.showToast('History Cleared');
+      });
+
+      // Click event for buttons
+      document.querySelectorAll('.calc-btn').forEach(btn => {
+        const val = btn.getAttribute('data-val');
+        if (!val) return;
+
+        btn.addEventListener('click', () => {
+          handleInput(val);
+        });
+      });
+
+      // Standardize input handler so we can use both keypress and buttons
+      function handleInput(val) {
+        if (val === 'C') {
+          expression = '';
+          screen.value = '0';
+          preview.textContent = '';
+        } else if (val === 'backspace') {
+          // If expression ends with a function prefix, delete the whole prefix
+          const prefixes = ['asin(', 'acos(', 'atan(', 'sqrt(', 'cbrt(', 'sin(', 'cos(', 'tan(', 'log(', 'ln(', 'abs('];
+          let prefixDeleted = false;
+          for (let prefix of prefixes) {
+            if (expression.endsWith(prefix)) {
+              expression = expression.slice(0, -prefix.length);
+              prefixDeleted = true;
+              break;
+            }
+          }
+          if (!prefixDeleted) {
+            expression = expression.slice(0, -1);
+          }
+          screen.value = expression || '0';
+          preview.textContent = expression;
+        } else if (val === '=') {
+          evaluateExpr();
+        } else if (['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'log', 'ln', 'sqrt', 'cbrt', 'abs'].includes(val)) {
+          expression += val + '(';
+          screen.value = expression;
+          preview.textContent = expression;
+        } else if (val === 'Ans') {
+          if (lastResult !== null) {
+            expression += 'Ans';
+            screen.value = expression;
+            preview.textContent = expression;
+          } else {
+            window.showToast('No previous answer available!');
+          }
+        } else {
+          if (expression === '0' && !isNaN(val)) expression = '';
+          expression += val;
+          screen.value = expression;
+          preview.textContent = expression;
+        }
+      }
+
+      // Keyboard support
+      window.addEventListener('keydown', (e) => {
+        if (document.activeElement.tagName === 'INPUT' && document.activeElement.id !== 'calc-screen') {
+          return;
+        }
+        
+        const key = e.key;
+        if (key >= '0' && key <= '9') {
+          handleInput(key);
+        } else if (['+', '-', '*', '/', '(', ')', '.', '%'].includes(key)) {
+          handleInput(key);
+        } else if (key === '^') {
+          handleInput('^');
+        } else if (key === 'Enter' || key === '=') {
+          e.preventDefault();
+          handleInput('=');
+        } else if (key === 'Backspace') {
+          handleInput('backspace');
+        } else if (key === 'Escape') {
+          handleInput('C');
+        }
+      });
+
+      // Evaluation Engine with MathJS
+      function evaluateExpr() {
+        if (!expression) return;
+        try {
+          if (typeof math === 'undefined') {
+            window.showToast('Loading Math Engine, please wait...');
+            return;
+          }
+
+          const scope = activeMode === 'DEG' ? {
+            sin: x => Math.sin(x * Math.PI / 180),
+            cos: x => Math.cos(x * Math.PI / 180),
+            tan: x => Math.tan(x * Math.PI / 180),
+            asin: x => Math.asin(x) * 180 / Math.PI,
+            acos: x => Math.acos(x) * 180 / Math.PI,
+            atan: x => Math.atan(x) * 180 / Math.PI,
+            log: x => Math.log10(x),
+            ln: x => Math.log(x),
+            cbrt: x => Math.cbrt(x),
+            abs: x => Math.abs(x),
+            pi: Math.PI,
+            e: Math.E,
+            Ans: lastResult || 0
+          } : {
+            sin: x => Math.sin(x),
+            cos: x => Math.cos(x),
+            tan: x => Math.tan(x),
+            asin: x => Math.asin(x),
+            acos: x => Math.acos(x),
+            atan: x => Math.atan(x),
+            log: x => Math.log10(x),
+            ln: x => Math.log(x),
+            cbrt: x => Math.cbrt(x),
+            abs: x => Math.abs(x),
+            pi: Math.PI,
+            e: Math.E,
+            Ans: lastResult || 0
+          };
+
+          let evalResult = math.evaluate(expression, scope);
+          
+          if (typeof evalResult === 'object' && evalResult !== null) {
+            if (evalResult.isComplex) {
+              evalResult = evalResult.toString();
+            } else if (typeof evalResult.toNumber === 'function') {
+              evalResult = evalResult.toNumber();
+            }
+          }
+
+          if (typeof evalResult === 'number') {
+            if (!Number.isFinite(evalResult)) {
+              evalResult = 'Infinity';
+            } else {
+              evalResult = +evalResult.toFixed(12);
+            }
+          }
+
+          preview.textContent = expression + ' =';
+          screen.value = String(evalResult);
+          
+          const newItem = { expr: expression, res: String(evalResult) };
+          history.push(newItem);
+          if (history.length > 50) history.shift();
+          try {
+            localStorage.setItem('calc_history', JSON.stringify(history));
+          } catch(e) {}
+          
+          renderHistory();
+
+          lastResult = typeof evalResult === 'number' ? evalResult : null;
+          expression = String(evalResult);
+        } catch (err) {
+          screen.value = 'Error';
+          preview.textContent = expression;
+          window.showToast('Math Error: ' + err.message);
+        }
+      }
+    
+      });
+    </script>
+  
+</body>
+</html>

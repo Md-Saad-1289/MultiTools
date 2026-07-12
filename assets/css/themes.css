@@ -1,0 +1,72 @@
+/* Themes CSS - Defines Light & Dark Mode Variables */
+
+:root {
+  /* Light Mode (Default) */
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-secondary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-rgb: 59, 130, 246;
+  --color-accent: #10b981;
+  --color-accent-hover: #059669;
+  --color-danger: #ef4444;
+  
+  --border-color: #e2e8f0;
+  --border-color-hover: #cbd5e1;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  --glass-backdrop: blur(12px);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Override */
+  --bg-primary: #090d16;
+  --bg-surface: #111827;
+  --bg-surface-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-muted: #9ca3af;
+  
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-rgb: 96, 165, 250;
+  --color-accent: #34d399;
+  --color-accent-hover: #10b981;
+  --color-danger: #f87171;
+  
+  --border-color: #1f2937;
+  --border-color-hover: #374151;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  
+  --glass-bg: rgba(17, 24, 39, 0.7);
+  --glass-border: rgba(31, 41, 55, 0.8);
+  --glass-backdrop: blur(12px);
+}
+
+/* Base Theme Transition rules */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
